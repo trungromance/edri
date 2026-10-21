@@ -119,3 +119,54 @@ Nguồn bù đắp chi phí:     | 100% Free Tier         | Phí Cấp 2 + Tài 
 | **Tỷ lệ chi phí CNTT / Tổng doanh thu** | **0%** | **~11 - 13%** | **~8 - 10%** |
 
 **Kết luận điều hành:** Đề án công nghệ được thiết kế để **tự nuôi sống chính nó**. Chi phí công nghệ không phải là "khoản chi tiêu mất đi" mà là **đòn bẩy tạo ra doanh thu gấp 10 lần** thông qua việc quản lý hội viên chặt chẽ, tổ chức giải đấu quy mô thu hút tài trợ và mở rộng các khóa đào tạo doanh nhân.
+
+---
+
+## 6. NỀN TẢNG DỮ LIỆU DOANH NGHIỆP (CDP 360°) & ĐỘNG CƠ TỰ ĐỘNG HÓA WORKFLOW
+
+### 6.1. Kiến Trúc Hợp Nhất Dữ Liệu CDP (Enterprise Customer Data Platform)
+CDP đóng vai trò là "trái tim dữ liệu" thống nhất của toàn bộ Viện, giải quyết dứt điểm tình trạng dữ liệu doanh nghiệp bị phân mảnh giữa các ban (Ban Truyền thông giữ danh sách email, Ban Thư ký giữ file Excel, Ban Thể thao giữ danh sách CLB, Ban Đối tác giữ hồ sơ năng lực).
+
+```
+[ Cổng Intake / Web Portal ] ────┐
+[ Hoạt Động CLB Thể Thao / Golf ] ──┼──> [ CDP 360° GOLDEN RECORD ] ──> [ Phân Khúc Động & ARI Score ]
+[ Học Viện LMS / Đào Tạo Micro ] ───┤       (Khóa chính: MST + ID)
+[ Tương Tác Bản Tin / Sự Kiện ] ──┘
+```
+
+1. **Bản ghi chuẩn duy nhất (Enterprise Golden Record):**
+   - Khóa định danh hợp nhất: **Mã số thuế (MST)** kết hợp **Mã hội viên EDRI**.
+   - Hợp nhất 5 nguồn dữ liệu: Pháp lý & Lãnh đạo; Tương tác truyền thông; Lịch sử học tập LMS; Hoạt động CLB & Thành tích thi đấu thể thao; Nhu cầu giao thương B2B ASEAN (mã ngành HS code).
+2. **Phân khúc động (Dynamic Real-time Segmentation):**
+   - Tự động lọc và nhóm doanh nghiệp theo thời gian thực: Nhóm DN xuất khẩu nông sản sang ASEAN; Nhóm DN cần tái cấu trúc tài chính; Hội viên CLB Golf Doanh nhân ASEAN; Doanh nghiệp tiềm năng nâng hạng Cấp 2.
+3. **Thẻ điểm định lượng ARI (ASEAN Readiness Index):**
+   - Lượng hóa mức độ sẵn sàng hợp tác và sức khỏe doanh nghiệp theo thang điểm 100, hiển thị tức thời cho Ban Lãnh đạo khi phê duyệt hồ sơ.
+
+---
+
+### 6.2. Động Cơ Tự Động Hóa (Event-Driven Automation Engine)
+Hệ thống loại bỏ hoàn toàn các khâu nhập liệu thủ công bằng kiến trúc hướng sự kiện (Event-driven Architecture):
+- **Webhooks & Edge Functions:** Lập tức kích hoạt khi có phát sinh hành động từ phía doanh nghiệp (nộp đơn, check-in, hoàn thành bài test).
+- **Background Queue Workers:** Đảm bảo gửi tin nhắn Zalo ZNS, xuất thẻ điện tử, tạo chứng chỉ không bao giờ bị nghẽn mạng hay sót thông tin.
+
+---
+
+### 6.3. Ba Luồng Quy Trình Luân Chuyển Tự Động Cốt Lõi (Core Workflows)
+
+#### Workflow 1: Onboarding & Phân Luồng Doanh Nghiệp (Zero-Touch)
+- **Bước 1 (Đầu vào):** Doanh nghiệp điền form 3 bước trên điện thoại qua Cổng Ghi nhận.
+- **Bước 2 (Kiểm tra & Chấm điểm):** Webhook đối soát MST trên cơ sở dữ liệu quốc gia, kiểm tra trùng lặp và tự động tính điểm ARI sơ bộ.
+- **Bước 3 (Phân loại & Cấp thẻ):** Hệ thống phân loại Cấp 1 (Thành viên trải nghiệm) hoặc Cấp 2 (Hội viên chính thức), tự động phát hành **Thẻ Hội viên Số hóa (Digital Membership Pass)** kèm mã QR tra cứu.
+- **Bước 4 (Thông báo & Điều phối):** Tự động gửi tin nhắn Zalo ZNS / Email chào mừng tới doanh nhân; đồng thời gửi cảnh báo Telegram phân công cán bộ Ban Đối tác phụ trách.
+
+#### Workflow 2: Vận Hành Sự Kiện & Giải Đấu Thể Thao Số Hóa
+- **Đăng ký:** Đoàn doanh nghiệp đăng ký qua web, nhận mã vé QR Code check-in.
+- **Xếp bảng tự động (Bracket Engine):** Hệ thống tự động chia bảng thi đấu vòng tròn hoặc loại trực tiếp theo Handicap/trình độ.
+- **Bảng điểm thời gian thực (Live Leaderboard):** Trọng tài nhập điểm trên web-app điện thoại, bảng điểm trên màn hình LED sân đấu nhảy điểm số sau mỗi cú đánh / trận đấu.
+- **Hậu cần số:** Kết thúc giải, hệ thống tự động sinh và gửi **Chứng nhận số hóa (Digital e-Certificate)** có chữ ký số của Viện trưởng tới email từng VĐV.
+
+#### Workflow 3: AI Matchmaking Ghép Đôi Giao Thương & Cố Vấn
+- **Tiếp nhận nhu cầu:** Doanh nghiệp gửi yêu cầu tìm đối tác mua/bán hoặc chuyên gia cố vấn.
+- **Truy vấn Vector AI:** Mô hình AI nhúng (Vector Embeddings) quét toàn bộ hồ sơ năng lực của các doanh nghiệp và chuyên gia trong CDP.
+- **So khớp thông minh:** Lọc ra danh sách đối tác đạt độ khớp năng lực >80%.
+- **Kết nối tự động:** Hệ thống tự động gửi thư giới thiệu song phương và tạo phòng họp trực tuyến 1:1 kèm khung giờ thỏa thuận.
