@@ -83,7 +83,6 @@
                 transform: translateY(0) scale(1);
             }
         }
-        /* Staggered card animations */
         .slide.active .anim-card {
             animation: cardFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
@@ -115,7 +114,6 @@
             color: #800020;
             border: 1px solid #F6D2D8;
         }
-        /* Gantt bar styles */
         .gantt-bar {
             height: 30px;
             border-radius: 8px;
@@ -148,7 +146,6 @@
             background: linear-gradient(90deg, #065F46 0%, #10B981 100%);
         }
 
-        /* Interactive card hover */
         .interactive-card {
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
@@ -259,7 +256,7 @@
                 <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Nguyên Lý Composable Scale-Up</span>
             </div>
 
-            <!-- Content Body (2 Columns Big Contrast) -->
+            <!-- Content Body -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto py-4">
                 <!-- Box 1: Bài toán trước mắt (6 tháng) -->
                 <div class="p-8 rounded-3xl bg-slate-50 border-2 border-slate-300 flex flex-col justify-between anim-card">
@@ -506,7 +503,7 @@
                         </div>
                     </div>
                     <div class="mt-4 p-3 bg-slate-800 rounded-xl text-center text-sm font-bold text-amber-400 border border-slate-700 flex items-center justify-center gap-1.5">
-                        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
                         Mục tiêu: 10.000+ Doanh nghiệp & Đối tác
                     </div>
                 </div>
@@ -569,7 +566,7 @@
                         <div class="col-span-6 px-1"><div class="h-2 bg-slate-200 rounded"></div></div>
                     </div>
 
-                    <!-- Task 3: Cổng CLB & Giải Đấu Thể Thao (NEW) -->
+                    <!-- Task 3: Cổng CLB & Giải Đấu Thể Thao -->
                     <div class="grid grid-cols-12 items-center text-sm anim-card">
                         <div class="col-span-4 font-bold text-emerald-800 flex items-center gap-2">
                             <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
@@ -671,7 +668,7 @@
 
             <!-- 4 Department Cards Grid -->
             <div class="grid grid-cols-2 gap-5 my-auto py-2">
-                <!-- Dept 1: Ban Văn Hóa & Thể Thao (MỚI) -->
+                <!-- Dept 1: Ban Văn Hóa & Thể Thao -->
                 <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 interactive-card anim-card" onclick="openDetailModal('pillar-culture-sports')">
                     <div class="flex items-center justify-between border-b border-slate-100 pb-2">
                         <h3 class="text-lg font-black text-charcoal-900 flex items-center gap-2">
@@ -1027,7 +1024,7 @@
             </div>
         </div>
 
-        <!-- ==================== SLIDE 9: VĂN HÓA, CLB & GIẢI ĐẤU THỂ THAO (MỚI) ==================== -->
+        <!-- ==================== SLIDE 9: VĂN HÓA, CLB & GIẢI ĐẤU THỂ THAO ==================== -->
         <div class="slide p-10 md:p-14 justify-between" id="slide-9">
             <!-- Header -->
             <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
@@ -1201,7 +1198,7 @@
                         <p class="text-sm font-semibold text-slate-500 mt-1">Phân Loại Hội Viên Tự Động</p>
                         <div class="mt-4 space-y-2.5 text-base text-slate-700">
                             <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
-                                • Tra cứu doanh nghiệp theo ngành nghề, khu vực, trạng thái.
+                                • Tra cứu doanh nghiệp theo ngành nghề, khu vực, trạng thái tiếp cận và CLB tham gia.
                             </div>
                             <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
                                 • Phân quyền chăm sóc cho các Ban theo dõi hành trình 6 bước.
@@ -1302,86 +1299,96 @@
             </div>
         </div>
 
-        <!-- ==================== SLIDE 12: DỰ TOÁN TƯỢNG TRƯNG (ZERO PHÍ) ==================== -->
+        <!-- ==================== SLIDE 12: DỰ TOÁN CHI PHÍ & LỘ TRÌNH NHÂN SỰ THEO QUY MÔ (MỚI) ==================== -->
         <div class="slide p-10 md:p-14 justify-between" id="slide-12">
             <!-- Header -->
             <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
                 <div>
-                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">11. Quản Trị Tài Chính</span>
-                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Dự Toán Tượng Trưng: Chiến Lược Tài Chính "Zero Phí"</h2>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">11. Quản Trị Chi Phí & Định Biên Nhân Sự</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Dự Toán Chi Phí & Lộ Trình Nhân Sự Theo Quy Mô (200 ➔ 10.000 DN)</h2>
                 </div>
-                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Không Gánh Nặng Tài Chính</span>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Unit Economics & Scalability</span>
             </div>
 
-            <!-- Cost Comparison Over Time -->
+            <!-- Cost & Staffing Scaling Body -->
             <div class="my-auto py-2">
-                <div class="grid grid-cols-12 gap-8">
-                    <!-- Left 7 cols: Table -->
+                <div class="grid grid-cols-12 gap-6">
+                    <!-- Left 7 cols: 4 Scale Tiers Table -->
                     <div class="col-span-7">
-                        <div class="rounded-2xl border-2 border-slate-200 overflow-hidden text-base shadow-sm">
+                        <div class="rounded-2xl border-2 border-slate-200 overflow-hidden text-sm shadow-sm">
                             <table class="w-full text-left">
                                 <thead class="bg-slate-100 text-charcoal-900 font-black">
                                     <tr>
-                                        <th class="p-3.5">Thành phần công nghệ</th>
-                                        <th class="p-3.5">Nền tảng sử dụng</th>
-                                        <th class="p-3.5 text-right">Chi phí 6 tháng đầu</th>
+                                        <th class="p-3">Quy mô Doanh Nghiệp</th>
+                                        <th class="p-3">Chi phí Hạ tầng/Tháng</th>
+                                        <th class="p-3">Chi phí / DN / Tháng</th>
+                                        <th class="p-3 text-right">Nhân sự IT vận hành</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-200 text-slate-800">
-                                    <tr>
-                                        <td class="p-3 font-semibold">Website Portal & Form Intake</td>
-                                        <td class="p-3 text-slate-500">Cloudflare Pages / Vercel Free</td>
-                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-bold text-charcoal-900">
+                                            Mức 1: Khởi động (200 - 500 DN)
+                                            <div class="text-xs text-slate-400 font-normal">Cloudflare + Supabase Free</div>
+                                        </td>
+                                        <td class="p-3 font-extrabold text-emerald-700">0 VNĐ</td>
+                                        <td class="p-3 font-bold text-emerald-700">0 VNĐ / DN</td>
+                                        <td class="p-3 text-right font-medium text-slate-700">1 Kỹ sư kiêm nhiệm + AI</td>
                                     </tr>
-                                    <tr>
-                                        <td class="p-3 font-semibold">Cơ sở dữ liệu Database</td>
-                                        <td class="p-3 text-slate-500">Supabase PostgreSQL Free Tier</td>
-                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-bold text-charcoal-900">
+                                            Mức 2: Tăng trưởng (1.000 - 3.000 DN)
+                                            <div class="text-xs text-slate-400 font-normal">Supabase Pro + ZNS + Video Stream</div>
+                                        </td>
+                                        <td class="p-3 font-extrabold text-slate-800">~3.200.000 đ</td>
+                                        <td class="p-3 font-bold text-slate-600">~1.100 đ / DN</td>
+                                        <td class="p-3 text-right font-medium text-slate-700">1 Fullstack Lead + 1 Data Ops</td>
                                     </tr>
-                                    <tr>
-                                        <td class="p-3 font-semibold">Chứng chỉ bảo mật SSL & CDN</td>
-                                        <td class="p-3 text-slate-500">Cloudflare Universal Free</td>
-                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
+                                    <tr class="hover:bg-slate-50 bg-maroon-50/40">
+                                        <td class="p-3 font-bold text-maroon-950">
+                                            Mức 3: Chuyên nghiệp (5.000 - 10.000 DN)
+                                            <div class="text-xs text-maroon-700 font-normal">LMS Video cao cấp + Mobile App Push</div>
+                                        </td>
+                                        <td class="p-3 font-extrabold text-maroon-900">~11.000.000 đ</td>
+                                        <td class="p-3 font-bold text-maroon-800">~1.200 đ / DN</td>
+                                        <td class="p-3 text-right font-bold text-maroon-900">2 Chuyên trách + 1 Hiện trường</td>
                                     </tr>
-                                    <tr>
-                                        <td class="p-3 font-semibold">Gửi Email chào mừng tự động</td>
-                                        <td class="p-3 text-slate-500">Resend Free (3.000 mail/tháng)</td>
-                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-3 font-semibold">Báo cáo Lãnh đạo thời gian thực</td>
-                                        <td class="p-3 text-slate-500">Google Sheets API Real-time</td>
-                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
-                                    </tr>
-                                    <tr class="bg-maroon-50 font-black text-maroon-900">
-                                        <td class="p-4 text-lg">TỔNG CHI PHÍ 6 THÁNG ĐẦU</td>
-                                        <td class="p-4 text-base">Toàn bộ hệ thống</td>
-                                        <td class="p-4 text-right text-xl text-maroon-700 font-black">0 VNĐ</td>
+                                    <tr class="hover:bg-slate-50 bg-charcoal-900 text-white">
+                                        <td class="p-3 font-bold text-white">
+                                            Mức 4: Đại cộng đồng (>10.000 DN ASEAN)
+                                            <div class="text-xs text-slate-400 font-normal">Enterprise Multi-region + AI Matching</div>
+                                        </td>
+                                        <td class="p-3 font-extrabold text-amber-400">~27.000.000 đ</td>
+                                        <td class="p-3 font-bold text-amber-300">~1.500 đ / DN</td>
+                                        <td class="p-3 text-right font-bold text-amber-400">CTO + 2 Kỹ sư + Data Lead</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Right 5 cols -->
-                    <div class="col-span-5 space-y-4 text-base">
-                        <div class="p-6 rounded-2xl bg-slate-50 border-2 border-slate-200 anim-card">
-                            <h4 class="font-black text-charcoal-900 text-lg flex items-center gap-2">
-                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                                Cơ Sở Để Có Chi Phí 0 Đồng?
+                    <!-- Right 5 cols: Staffing & Financial Mechanism -->
+                    <div class="col-span-5 space-y-3.5 text-sm">
+                        <div class="p-5 rounded-2xl bg-slate-50 border-2 border-slate-200 anim-card">
+                            <h4 class="font-black text-charcoal-900 text-base flex items-center gap-2">
+                                <svg class="w-5 h-5 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                Nhân Sự Vận Hành Tinh Gọn (Lean IT)
                             </h4>
-                            <p class="text-slate-600 mt-2 leading-relaxed text-sm">
-                                Các tập đoàn công nghệ lớn hỗ trợ các gói Free Tier vĩnh viễn rất lớn. Ở quy mô 500 - 1.000 doanh nghiệp đầu tiên, Viện không bao giờ vượt ngưỡng miễn phí này.
+                            <p class="text-slate-600 mt-1 leading-relaxed text-xs">
+                                Nhờ tự động hóa AI, <strong>đội ngũ 2 - 3 nhân sự</strong> có thể vận hành trơn tru toàn bộ hệ thống cho 10.000 doanh nghiệp — tương đương một phòng CNTT truyền thống 15 - 20 người.
                             </p>
                         </div>
 
-                        <div class="p-6 rounded-2xl bg-emerald-50 border-2 border-emerald-300 anim-card">
-                            <h4 class="font-black text-emerald-950 text-lg flex items-center gap-2">
-                                <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                                Tự Chủ Tài Chính Từ Tài Trợ Giải Đấu
-                            </h4>
-                            <p class="text-emerald-900 mt-2 leading-relaxed text-sm">
-                                Nguồn thu xã hội hóa từ các <strong>Giải đấu Golf / Pickleball Doanh nhân ASEAN</strong> và hội phí Cấp 2 sẽ giúp Viện tự chủ tài chính hoàn toàn để nâng cấp các gói Pro mà không cần ngân sách bù đắp.
+                        <div class="p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-300 anim-card interactive-card" onclick="openDetailModal('cost-scaling-matrix')">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-black text-emerald-950 text-base flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    Cơ Chế Tài Chính Tự Nuôi Sống (ROI)
+                                </h4>
+                                <span class="text-xs text-emerald-800 font-bold">Xem bóc tách ↗</span>
+                            </div>
+                            <p class="text-emerald-900 mt-1.5 leading-relaxed text-xs">
+                                Chi phí hạ tầng chỉ chiếm <strong>1.5% - 2%</strong> doanh thu hoạt động. Nguồn thu từ hội phí Cấp 2, các khóa đào tạo LMS và tài trợ giải đấu thể thao đem lại dòng tiền thặng dư lớn cho Viện.
                             </p>
                         </div>
                     </div>
@@ -1391,7 +1398,7 @@
             <!-- Footer -->
             <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
                 <span>Trang 12 / 13</span>
-                <span>Tuyệt đối tuân thủ nguyên tắc: Không phát sinh chi phí trước khi có nguồn thu</span>
+                <span>Chi phí trên mỗi doanh nghiệp siêu thấp (~1.200 đ/DN/tháng) — Không gây áp lực tài chính cho tổ chức</span>
             </div>
         </div>
 
@@ -1450,10 +1457,10 @@
                         </div>
                         <div class="space-y-2 text-sm text-slate-300">
                             <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
-                                📄 <strong>EDRI_TECH_MASTER_PLAN.md</strong>: Lộ trình 3 năm, Gantt chart, RACI.
+                                📄 <strong>EDRI_TECH_MASTER_PLAN.md</strong>: Ma trận chi phí theo quy mô & định biên IT.
                             </div>
                             <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
-                                🏛 <strong>EDRI_TECH_ARCHITECTURE.md</strong>: Kiến trúc LMS, Giải đấu thể thao & AI.
+                                🏛 <strong>EDRI_TECH_ARCHITECTURE.md</strong>: Kiến trúc Cloud, Giải đấu thể thao & AI.
                             </div>
                             <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
                                 ⚡ <strong>EDRI_COMPARISON_VIBE_CODING.md</strong>: Báo cáo kinh tế Vibe Coding vs Open-source.
@@ -1535,7 +1542,7 @@
                 <button onclick="goToSlide(9)" class="p-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-left border border-emerald-300 font-bold text-emerald-950">9. Cổng CLB & Hệ Thống Giải Đấu Thể Thao (MỚI)</button>
                 <button onclick="goToSlide(10)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">10. Bộ Ba Hạt Nhân Triển Khai Sớm (14 Ngày)</button>
                 <button onclick="goToSlide(11)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">11. So Sánh: Open-Source Cũ vs Vibe Coding AI</button>
-                <button onclick="goToSlide(12)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">12. Dự Toán Tượng Trưng: Chiến Lược Zero Phí</button>
+                <button onclick="goToSlide(12)" class="p-3.5 rounded-xl bg-maroon-50 hover:bg-maroon-100 text-left border border-maroon-300 font-bold text-maroon-950">12. Dự Toán Chi Phí & Nhân Sự Theo Quy Mô (MỚI)</button>
                 <button onclick="goToSlide(13)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">13. Kế Hoạch Hành Động Ngay (Sprint 14 Ngày)</button>
             </div>
         </div>
@@ -1618,6 +1625,27 @@
 
         // Detailed knowledge base for interactive popups
         const detailData = {
+            'cost-scaling-matrix': {
+                title: 'Bóc Tách Chi Phí Hạ Tầng & Nhân Sự Chi Tiết Theo Quy Mô',
+                tag: 'Quản Trị Chi Phí Mở Rộng',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Chi phí công nghệ được thiết kế theo mô hình biến đổi tuyến tính siêu thấp, tự động mở rộng theo doanh thu:</p>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>1. Database Supabase:</strong> Dưới 500 DN (0đ) ➔ 1.000 - 3.000 DN (650k/tháng) ➔ 10.000 DN (gói Addon ~2 - 6tr/tháng).
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>2. Video Streaming LMS:</strong> Sử dụng Cloudflare Stream tính theo phút xem thực tế, chỉ ~1 - 2.5tr/tháng cho hàng ngàn học viên.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>3. Tin nhắn Zalo ZNS & Email:</strong> Gửi thông báo kết quả giải đấu, sinh hoạt CLB chỉ ~200 - 300 đ/tin.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>4. Trợ lý AI Tokens:</strong> Sử dụng Gemini Flash/DeepSeek siêu rẻ, chi phí đọc tóm tắt 1 hồ sơ chưa đến 50 Đồng (VNĐ).
+                        </div>
+                    </div>
+                `
+            },
             'pillar-community': {
                 title: 'Trụ Cột 1: Cộng Đồng Doanh Nhân Việt Nam - ASEAN',
                 tag: 'Phễu Đầu Vào & Tương Tác',
@@ -1629,9 +1657,6 @@
                         </div>
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
                             <strong>• Onboarding tự động:</strong> Gửi thư chào mừng, hướng dẫn quy chế và đưa vào phễu chẩn đoán nhu cầu.
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong>• Gắn kết thực chất:</strong> Thành viên tham gia vì nhận được sự gỡ khó thực tế, không dừng ở networking bề nổi.
                         </div>
                     </div>
                 `
@@ -1648,9 +1673,6 @@
                         <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200">
                             <strong>• Giải đấu thường niên:</strong> Tổ chức Cúp Golf & Thể thao Doanh nhân Việt Nam - ASEAN với hệ thống chia bảng và chấm điểm số hóa.
                         </div>
-                        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200">
-                            <strong>• Tự chủ nguồn thu:</strong> Nguồn thu tài trợ từ giải đấu giúp bù đắp chi phí vận hành công nghệ mà không cần ngân sách Viện.
-                        </div>
                     </div>
                 `
             },
@@ -1663,7 +1685,6 @@
                         <li>• <strong>Danh bạ CLB chuyên đề:</strong> Quản lý thành viên theo Handicap Golf, trình độ Pickleball/Tennis, lĩnh vực nghệ thuật.</li>
                         <li>• <strong>Lịch sinh hoạt thông minh:</strong> Tự động gửi thông báo lịch giao lưu định kỳ qua Zalo OA và Email.</li>
                         <li>• <strong>Điểm danh QR Code:</strong> Quét mã check-in tự động tại mỗi buổi giao lưu sân golf hoặc sân tập.</li>
-                        <li>• <strong>Gắn kết dữ liệu:</strong> Tự động tích lũy điểm gắn kết văn hóa vào Hồ sơ 360 độ (CDP) của doanh nhân.</li>
                     </ul>
                 `
             },
@@ -1673,10 +1694,9 @@
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Hệ thống chuyên nghiệp phục vụ các giải đấu lớn: Giải Golf Hữu Nghị Việt Nam - ASEAN, Cúp Pickleball Doanh Nhân EDRI.</p>
                     <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• <strong>Cổng đăng ký trực tuyến:</strong> Đăng ký đoàn doanh nghiệp, nộp lệ phí, chọn bảng đấu (Đôi nam, Đôi nữ, Đôi nam nữ).</li>
-                        <li>• <strong>Thuật toán chia bảng tự động (Bracket Engine):</strong> Tự động xếp lịch thi đấu vòng tròn hoặc loại trực tiếp, điều phối sân đấu.</li>
-                        <li>• <strong>Bảng điểm trực tuyến thời gian thực (Live Leaderboard):</strong> Trọng tài nhập điểm trên điện thoại; bảng tỷ số nhảy trực tiếp trên màn hình LED sân đấu và website giải đấu.</li>
-                        <li>• <strong>Thống kê thành tích:</strong> Lưu trữ lịch sử vô địch và huy chương của các doanh nghiệp qua các mùa giải.</li>
+                        <li>• <strong>Cổng đăng ký trực tuyến:</strong> Đăng ký đoàn doanh nghiệp, nộp lệ phí, chọn bảng đấu.</li>
+                        <li>• <strong>Thuật toán chia bảng tự động (Bracket Engine):</strong> Tự động xếp lịch thi đấu vòng tròn hoặc loại trực tiếp.</li>
+                        <li>• <strong>Bảng điểm trực tuyến thời gian thực (Live Leaderboard):</strong> Trọng tài nhập điểm trên điện thoại; bảng tỷ số nhảy trực tiếp trên màn hình LED sân đấu.</li>
                     </ul>
                 `
             },
@@ -1686,10 +1706,8 @@
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Khai thác tối đa giá trị thương hiệu giải đấu để mang lại nguồn tài trợ xã hội hóa cho hoạt động của Viện.</p>
                     <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• <strong>Số hóa vị trí tài trợ:</strong> Hiển thị logo Nhà tài trợ Kim Cương, Vàng, Bạc trên Live Leaderboard, Livestream và Cổng thông tin.</li>
-                        <li>• <strong>Gian hàng ảo doanh nghiệp (Virtual Booth):</strong> Giới thiệu sản phẩm/dịch vụ của đơn vị tài trợ đến hàng ngàn doanh nhân tham dự.</li>
-                        <li>• <strong>Báo cáo đo lường tiếp cận:</strong> Thống kê số lượt hiển thị thương hiệu để minh bạch quyền lợi cho nhà tài trợ.</li>
-                        <li>• <strong>Đêm Gala Doanh nhân Văn hóa:</strong> Hệ thống bình chọn trực tuyến và sơ đồ vé mời điện tử có mã QR.</li>
+                        <li>• <strong>Số hóa vị trí tài trợ:</strong> Hiển thị logo Nhà tài trợ Kim Cương, Vàng, Bạc trên Live Leaderboard, Livestream.</li>
+                        <li>• <strong>Gian hàng ảo doanh nghiệp (Virtual Booth):</strong> Giới thiệu sản phẩm/dịch vụ của đơn vị tài trợ.</li>
                     </ul>
                 `
             },
@@ -1698,17 +1716,6 @@
                 tag: 'Nâng Cao Năng Lực Quản Trị',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Giải quyết tận gốc các điểm nghẽn về quản trị, nhân sự, tài chính và chuyển đổi số cho doanh nghiệp hội viên.</p>
-                    <div class="space-y-3 text-sm">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong>• Cố vấn 1:1:</strong> Huy động các chuyên gia cấp Giám đốc Đào tạo, Giám đốc Nhân sự tham gia chẩn đoán thực tế.
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong>• Đào tạo may đo:</strong> Thiết kế chương trình theo đúng "bệnh" của từng nhóm doanh nghiệp từ dữ liệu CDP.
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong>• LMS Hybrid:</strong> Học viện số cung cấp các bài giảng ngắn micro-learning linh hoạt cho lãnh đạo bận rộn.
-                        </div>
-                    </div>
                 `
             },
             'pillar-trade': {
@@ -1716,17 +1723,6 @@
                 tag: 'Mở Rộng Thị Trường Quốc Tế',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Tận dụng mạng lưới ngoại giao và tổ chức quốc tế của Viện để mở ra các cơ hội giao thương hai chiều.</p>
-                    <div class="space-y-3 text-sm">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong>• Chiều đi (Việt Nam ➔ ASEAN):</strong> Hỗ trợ doanh nghiệp Việt đạt chuẩn chất lượng xuất khẩu sang Lào, Thái Lan, Singapore...
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong>• Chiều về (ASEAN ➔ Việt Nam):</strong> Kết nối đối tác quốc tế tìm kiếm nhà phân phối và nguồn cung ứng tại Việt Nam.
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong>• AI Matchmaking:</strong> Tự động lọc và ghép đôi nhu cầu B2B với độ chính xác cao dựa trên hồ sơ CDP.
-                        </div>
-                    </div>
                 `
             },
             'quickwin-portal': {
@@ -1734,12 +1730,6 @@
                 tag: 'Bàn Giao 5 - 7 Ngày',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Kênh truyền thông thể chế chính thức, khẳng định vị thế khoa học trực thuộc Hội SEARAV.</p>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• Giới thiệu ban lãnh đạo (Viện trưởng TS. Lê Thị Huyền Trang, Viện trưởng Danh dự Thang Văn Phúc, Chủ tịch HĐQL Lương Thị Kim Xuân).</li>
-                        <li>• Trình bày các trụ cột hoạt động và chuyên trang Câu lạc bộ Doanh nhân.</li>
-                        <li>• Nút kêu gọi hành động dẫn trực tiếp tới Cổng Intake Doanh nghiệp.</li>
-                        <li>• Triển khai trên Cloudflare Pages không tốn phí duy trì máy chủ.</li>
-                    </ul>
                 `
             },
             'quickwin-intake': {
@@ -1747,12 +1737,6 @@
                 tag: 'Bàn Giao 3 - 5 Ngày',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Công cụ tiếp nhận dữ liệu số hóa thông minh thay thế hoàn toàn file giấy và Excel rời rạc.</p>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• Biểu mẫu tối ưu Mobile-first, thao tác nhanh trong 3 phút.</li>
-                        <li>• Chẩn đoán điểm nghẽn doanh nghiệp và khảo sát sở thích CLB (Golf, Pickleball, Văn hóa).</li>
-                        <li>• Gắn mã người giới thiệu (Referral ID) để ghi nhận công sức của từng Trưởng ban.</li>
-                        <li>• Tự động phản hồi thư chào mừng và gửi thông báo Telegram cho phụ trách viên.</li>
-                    </ul>
                 `
             },
             'quickwin-crm': {
@@ -1760,12 +1744,6 @@
                 tag: 'Bàn Giao 3 - 4 Ngày',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Bảng điều khiển tập trung cho Ban Phát triển Cộng đồng và Ban Thư ký.</p>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• Danh bạ doanh nghiệp phân loại theo ngành, khu vực, trạng thái tiếp cận và CLB tham gia.</li>
-                        <li>• Quản lý hành trình 6 bước và chuyển đổi từ Cấp 1 lên Cấp 2.</li>
-                        <li>• Đồng bộ trực tiếp về 1 file Google Sheets bảo mật để Lãnh đạo xem trên điện thoại 24/7.</li>
-                        <li>• Hỗ trợ xuất Excel báo cáo giao ban chỉ bằng 1 cú nhấp chuột.</li>
-                    </ul>
                 `
             },
             'lms-detail': {
@@ -1773,11 +1751,6 @@
                 tag: 'Mở Rộng Năm 2 (2027 - 2028)',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Mô hình đào tạo linh hoạt kết hợp trực tiếp và trực tuyến, phù hợp với quỹ thời gian của chủ doanh nghiệp.</p>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• <strong>Lớp học tập trung:</strong> Điểm danh quét mã QR, giao lưu mạng lưới chuyên gia cố vấn thực tế.</li>
-                        <li>• <strong>Khóa học số (Micro-learning):</strong> Video bài giảng 5 - 10 phút, bài tập trắc nghiệm chẩn đoán năng lực quản trị.</li>
-                        <li>• <strong>Chứng chỉ số hóa:</strong> Xuất chứng chỉ có gắn chữ ký số và mã QR tra cứu tính chính thống trên website Viện.</li>
-                    </ul>
                 `
             },
             'app-detail': {
@@ -1785,11 +1758,6 @@
                 tag: 'Bùng Nổ Năm 3 (2028 - 2029)',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Biến tổ chức thành nền tảng số hóa nằm gọn trong tay của hàng vạn doanh nhân trên iOS & Android.</p>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• <strong>Thẻ hội viên số hóa (Digital Pass):</strong> Check-in sự kiện & sân thi đấu thể thao 1 chạm.</li>
-                        <li>• <strong>Danh bạ CLB bảo mật:</strong> Tìm kiếm bạn chơi Golf, Pickleball và đối tác kinh doanh cùng sở thích.</li>
-                        <li>• <strong>Đặt lịch cố vấn 1:1:</strong> Chọn chuyên gia và khung giờ mong muốn ngay trên điện thoại.</li>
-                    </ul>
                 `
             },
             'trade-detail': {
@@ -1797,10 +1765,6 @@
                 tag: 'Bứt Phá Quốc Tế (2028 - 2029)',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Nền tảng thương mại số hóa kết nối doanh nghiệp Việt với các cơ quan xúc tiến thương mại 10 quốc gia ASEAN.</p>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• Cơ sở dữ liệu sản phẩm đạt chuẩn quốc tế (ISO, Halal, FDA).</li>
-                        <li>• AI Matchmaking ghép đôi nhu cầu cung - cầu tự động.</li>
-                    </ul>
                 `
             },
             'ai-media': {
@@ -1808,10 +1772,6 @@
                 tag: 'Công Nghệ Ban Truyền Thông',
                 content: `
                     <p class="text-base text-slate-600 leading-relaxed mb-4">Giúp 1 cán bộ truyền thông đạt năng suất tương đương phòng truyền thông 5 nhân sự chuyên nghiệp.</p>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• Tự động viết thông cáo báo chí, bài báo website, video ngắn về sự kiện và giải đấu thể thao.</li>
-                        <li>• Phân phối đa kênh 1 chạm lên Website, Fanpage, Zalo OA và Email Newsletter.</li>
-                    </ul>
                 `
             },
             'quantitative-analytics': {

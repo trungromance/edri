@@ -1,152 +1,121 @@
 # VIỆN NGHIÊN CỨU VÀ PHÁT TRIỂN DOANH NHÂN VIỆT NAM - ASEAN (EDRI)
 ## MASTER PLAN: KẾ HOẠCH TỔNG THỂ PHÁT TRIỂN HỆ SINH THÁI CÔNG NGHỆ (2026 - 2029)
-### TỪ BỘ BA HẠT NHÂN "ZERO PHÍ" ĐẾN BẢN ĐỒ CÔNG NGHỆ MỞ RỘNG 2-3 NĂM SAU
-*Hệ thống tích hợp: Cộng Đồng – Đào Tạo – Xúc Tiến Thương Mại – Văn Hóa & Thể Thao Doanh Nhân*
+### QUẢN TRỊ TÀI CHÍNH MỞ RỘNG: DỰ TOÁN CHI PHÍ & LỘ TRÌNH NHÂN SỰ KHI QUY MÔ DOANH NGHIỆP TĂNG TRƯỞNG
+*Định mức chi phí: Từ 200 DN (0 VNĐ) ➔ 1.000 DN ➔ 5.000 DN ➔ 10.000+ DN*
 
 ---
 
-## 1. TẦM NHÌN CHIẾN LƯỢC: NGUYÊN TẮC "BẮT ĐẦU ĐƠN GIẢN - MỞ RỘNG VĨ ĐẠI"
+## 1. NGUYÊN TẮC QUẢN TRỊ CHI PHÍ & NHÂN SỰ DÀI HẠN
 
-Một sai lầm phổ biến của các tổ chức khi chuyển đổi số là: **Hoặc vẽ ra hệ thống quá đồ sộ dẫn tới sa lầy, cạn kiệt ngân sách; hoặc chỉ làm các giải pháp chắp vá, khiến 1-2 năm sau phải đập đi xây lại toàn bộ.**
+Một trong những thách thức sống còn của các đề án công nghệ là: **Làm sao để hệ thống vừa vận hành trơn tru ở giai đoạn ban đầu chưa có kinh phí, vừa kiểm soát được chi phí hạ tầng và định biên nhân sự khi số lượng doanh nghiệp tăng vọt lên hàng ngàn, hàng vạn thành viên?**
 
-Đề án công nghệ của Viện EDRI lựa chọn triết lý **"Kiến trúc Mở rộng Đa tầng (Composable Scale-up)"**:
-1. **Bài toán trước mắt (6 tháng đầu):** Triệt để đơn giản, dễ làm, bàn giao trong 14 ngày, **ngân sách 0 Đồng (Zero-Budget)**, tập trung vào bộ ba hạt nhân: **Website Portal + Cổng Intake Doanh nghiệp + Mini-CRM**.
-2. **Bức tranh lớn mở rộng (2 - 3 năm tới):** Khi đã có dữ liệu và dòng tiền từ hội viên cùng các hoạt động đào tạo, xúc tiến và xã hội hóa tài trợ giải đấu, hệ thống tự động nở rộng thành **Hệ sinh thái số hóa toàn diện**:
-   - **Hệ thống Đào tạo LMS Hybrid (Online & Offline):** Quản lý học viên, bài giảng video, bài tập chẩn đoán, cấp chứng chỉ số Blockchain/QR.
-   - **Hệ thống Quản trị Văn hóa, CLB & Tổ chức Giải Đấu Thể Thao (Sports & Tournament Engine):** Quản lý sinh hoạt các CLB Doanh nhân (Golf, Pickleball, Tennis, Chạy bộ, Nghệ thuật), cổng tổ chức giải đấu thể thao doanh nghiệp, xếp bảng, live leaderboard và số hóa quyền lợi nhà tài trợ.
-   - **Ứng dụng Di Động (Mobile App EDRI ASEAN trên iOS & Android):** Mạng xã hội doanh nhân tinh hoa, danh bạ số, lịch hẹn cố vấn 1:1, thẻ hội viên điện tử.
-   - **Sàn Xúc Tiến Giao Thương Số Hóa Song Phương:** Thuật toán AI tự động ghép nối (Matchmaking) doanh nghiệp Việt Nam với các nhà mua hàng/đối tác 10 quốc gia ASEAN.
-   - **Xưởng Nội Dung Số Tự Động (AI Media Studio):** Phục vụ phòng truyền thông tự động tạo bài viết, video ngắn, infographics và phân phối đa kênh.
+Đề án công nghệ của Viện EDRI áp dụng 3 nguyên lý quản trị hiện đại:
+1. **Mô hình chi phí biến đổi tuyến tính siêu thấp (Ultra-low Variable Cost):** Chi phí công nghệ tăng tỷ lệ thuận với số lượng doanh nghiệp nhưng với tốc độ cực kỳ chậm nhờ kiến trúc Serverless. Chi phí trung bình trên mỗi doanh nghiệp (**Cost per Enterprise**) chỉ dao động từ **500 VNĐ - 1.500 VNĐ / doanh nghiệp / tháng**.
+2. **Nguyên tắc "Tự chủ tài chính theo từng nấc thang":** 
+   - 0 - 6 tháng đầu: 100% Free-Tier (0 VNĐ).
+   - Khi có 1.000 - 3.000 DN: Nguồn thu từ hội phí Cấp 2 và tài trợ giải đấu thể thao dư sức bù đắp chi phí nâng cấp hạ tầng.
+   - Khi có 5.000 - 10.000 DN: Chi phí công nghệ chỉ chiếm chưa đầy **1.5% - 2.5%** tổng doanh thu hoạt động của Viện.
+3. **Mô hình nhân sự tinh gọn kết hợp AI (AI-Augmented Lean Team):** Không phình to bộ máy IT. Nhờ ứng dụng trợ lý AI và tự động hóa quy trình (Low-code/No-code Automation), một đội ngũ chỉ từ **2 - 3 nhân sự** có thể vận hành toàn bộ hệ sinh thái phục vụ 10.000 doanh nghiệp, tương đương hiệu suất của một phòng CNTT truyền thống từ 15 - 20 người.
 
 ---
 
-## 2. BẢN ĐỒ LỘ TRÌNH 3 NĂM & BIỂU ĐỒ GANTT (GANTT CHART)
+## 2. MA TRẬN DỰ TOÁN CHI PHÍ THEO 4 MỨC ĐỘ QUY MÔ DOANH NGHIỆP
 
 ```
 ========================================================================================================================
-BIỂU ĐỒ GANTT LỘ TRÌNH PHÁT TRIỂN HỆ SINH THÁI SỐ EDRI (2026 - 2029)
+BẢNG DỰ TOÁN CHI PHÍ CÔNG NGHỆ THEO QUY MÔ TĂNG TRƯỞNG DOANH NGHIỆP (2026 - 2029)
 ========================================================================================================================
 
-Hạng mục / Mốc thời gian               | Q4/2026 | Q1/2027 | Q2/2027 | Q3/2027 | Q4/2027 | 2028 (Năm 2) | 2029 (Năm 3)
----------------------------------------+---------+---------+---------+---------+---------+--------------+--------------
-GIAI ĐOẠN 1: BỘ BA HẠT NHÂN (ZERO PHÍ)  |         |         |         |         |         |              |
-1. Website Portal Thể Chế Viện EDRI     | [====]  |         |         |         |         |              |
-2. Cổng Intake & Chẩn Đoán Doanh Nghiệp | [====]  |         |         |         |         |              |
-3. Mini-CRM Phân Loại Hội Viên Cấp 1-2  | [====]  |         |         |         |         |              |
-4. Onboarding 200 Doanh nghiệp đầu tiên |   [===] |         |         |         |         |              |
-5. Phục vụ Kỷ niệm 5 năm & Tổng kết năm |     [=] |         |         |         |         |              |
----------------------------------------+---------+---------+---------+---------+---------+--------------+--------------
-GIAI ĐOẠN 2: CHUẨN HÓA, VĂN HÓA & VẬN HÀNH|       |         |         |         |         |              |
-6. Nâng cấp CDP Hồ Sơ 360° Doanh Nghiệp |         | [=====] |         |         |         |              |
-7. Cổng CLB & Tổ Chức Giải Đấu Thể Thao |         |   [===] | [=====] |         |         | [==========] | [==========]
-8. Cổng Điều Phối Chuyên Gia Cố Vấn 1:1 |         |   [===] | [=====] |         |         |              |
-9. AI Content Engine Ban Truyền Thông   |         |   [===] | [=====] |         |         |              |
-10. Quantitative Analytics Ban Đối Tác  |         |         | [=====] | [=====] |         |              |
-11. Triển khai Hội phí chính thức Cấp 2 |         |         |   [===] | [=====] | [=====] |              |
----------------------------------------+---------+---------+---------+---------+---------+--------------+--------------
-GIAI ĐOẠN 3: BỨT PHÁ QUỐC TẾ & MỞ RỘNG  |         |         |         |         |         |              |
-12. Hệ thống Đào tạo LMS Hybrid (Edu)   |         |         |         | [=====] | [=====] | [==========] | [==========]
-13. Sàn Matchmaking Giao Thương ASEAN   |         |         |         |         | [=====] | [==========] | [==========]
-14. Mobile App EDRI (iOS & Android)     |         |         |         |         |   [===] | [==========] | [==========]
-15. Hệ thống Quản trị BI & Data Lake    |         |         |         |         |         | [==========] | [==========]
+Thành phần chi phí        | Mức 1: Khởi động       | Mức 2: Tăng trưởng     | Mức 3: Chuyên nghiệp   | Mức 4: Đại cộng đồng
+                          | (200 - 500 DN)         | (1.000 - 3.000 DN)     | (5.000 - 10.000 DN)    | (>10.000 DN ASEAN)
+--------------------------+------------------------+------------------------+------------------------+----------------------
+1. Web Hosting & CDN      | Cloudflare Pages: 0 đ  | Cloudflare Pro: 500k   | Cloudflare Pro: 500k   | Cloudflare Business: 1.5tr
+2. Database (PostgreSQL)  | Supabase Free: 0 đ     | Supabase Pro: 650k     | Supabase Pro+Addon: 2tr| Supabase Dedicated: 6tr
+3. Email & Zalo ZNS       | Resend Free: 0 đ       | Resend Paid + ZNS: 600k| ZNS + Email: 1.5tr     | ZNS + Email: 3.5tr
+4. Video Streaming LMS    | Chưa triển khai: 0 đ   | Cloudflare Stream: 500k| Video Streaming: 2.5tr | Video Streaming: 5.0tr
+5. AI Tokens (Matching)   | Gemini Free: 0 đ       | Gemini Paid: 500k      | DeepSeek/Gemini: 2.0tr | Multi-LLM API: 5.0tr
+6. Mobile App Infra       | Chưa triển khai: 0 đ   | Apple/Google Dev: 250k | Push Notif + App: 1.5tr| Push Notif + App: 3.0tr
+7. Sao lưu & Bảo mật WAF  | Tự động Free: 0 đ      | Backup tự động: 200k   | Dedicated Backup: 1.0tr| Enterprise Sec: 3.0tr
+--------------------------+------------------------+------------------------+------------------------+----------------------
+TỔNG HẠ TẦNG / THÁNG      | 0 VNĐ                  | ~3.200.000 VNĐ / tháng | ~11.000.000 VNĐ / tháng| ~27.000.000 VNĐ / tháng
+CHI PHÍ TRÊN MỖI DN/THÁNG | 0 VNĐ / DN             | ~1.100 VNĐ / DN        | ~1.200 VNĐ / DN        | ~1.500 VNĐ / DN
+TỶ LỆ TRÊN DOANH THU VIỆN | 0%                     | ~1.2% Doanh thu        | ~1.5% Doanh thu        | ~1.8% Doanh thu
 ========================================================================================================================
-Chú thích: [====] Giai đoạn phát triển tập trung | Nguồn thu thể thao & sự kiện hỗ trợ tái đầu tư hạ tầng công nghệ
+Nguồn bù đắp chi phí:     | 100% Free Tier         | Phí Cấp 2 + Tài trợ CLB| Doanh thu đào tạo LMS  | Doanh thu B2B Matching
 ```
 
 ---
 
-## 3. CÔNG NGHỆ HỖ TRỢ TOÀN DIỆN TẤT CẢ CÁC PHÒNG BAN
+## 3. LỘ TRÌNH ĐỊNH BIÊN NHÂN SỰ CÔNG NGHỆ (IT & OPS HEADCOUNT ROADMAP)
 
-Hệ thống công nghệ của Viện không phục vụ riêng lẻ một bộ phận mà trở thành **hệ thần kinh số (Digital Nervous System)** liên kết 5 khối chức năng chính:
+Để đảm bảo tính khả thi, nhân sự công nghệ được mở rộng từng bước theo doanh thu và quy mô phục vụ:
 
 ```
 +----------------------------------------------------------------------------------------------------+
-|                                VIỆN TRƯỞNG & BAN LÃNH ĐẠO VIỆN EDRI                                |
-|   [Executive BI Dashboard] [Báo Cáo Sức Khỏe Doanh Nghiệp Thời Gian Thực] [Giám Sát KPI Các Ban]    |
+| LỘ TRÌNH NHÂN SỰ CÔNG NGHỆ EDRI THEO TỪNG GIAI ĐOẠN                                                |
 +----------------------------------------------------------------------------------------------------+
-                   ▲                                               ▲
-                   │                                               │
-+------------------------------------+           +------------------------------------+
-| BAN TRUYỀN THÔNG & THƯƠNG HIỆU     |           | BAN PHÁT TRIỂN ĐỐI TÁC DN VN & QT  |
-| - AI Automated Content Studio      |           | - CRM Chuyên sâu quản lý đối tác   |
-| - Omnichannel Marketing Engine     |           | - Quantitative Business Analytics  |
-| - Truyền thông tài trợ giải đấu    |           | - AI Matchmaking giao thương ASEAN |
-+------------------------------------+           +------------------------------------+
-                   │                                               │
-                   ▼                                               ▼
-+------------------------------------+           +------------------------------------+
-| BAN ĐÀO TẠO & PHÁT TRIỂN NĂNG LỰC  |           | BAN VĂN HÓA, THỂ THAO & CLB DN     |
-| - Hệ thống LMS Hybrid              |           | - Club Management Portal           |
-| - Micro-learning & Case studies    |           | - Tournament & League Engine       |
-| - Cấp chứng chỉ số hóa định danh   |           | - Live Leaderboard & Tài trợ số    |
-+------------------------------------+           +------------------------------------+
-                   │                                               │
-                   └───────────────────────┬───────────────────────┘
-                                           ▼
-                         +------------------------------------+
-                         | BAN VĂN PHÒNG & THƯ KÝ VIỆN        |
-                         | - Cổng tiếp nhận (Intake Gateway)  |
-                         | - Quản lý sự kiện QR Code Check-in |
-                         | - Thư viện văn bản thể chế số      |
-                         +------------------------------------+
+
+[GIAI ĐOẠN 1: KHỞI TẠO (0 - 6 THÁNG) | 200 - 500 DN]
+├── 01 Tech Lead / Vibe Coder (Bán chuyên hoặc chuyên gia nội bộ kiêm nhiệm)
+├── 01 Cán bộ Thư ký & Quản trị Dữ liệu (Phối hợp duyệt hồ sơ Cổng Intake)
+├── Lực lượng hỗ trợ: Trợ lý AI (Cursor IDE, Claude 3.5 Sonnet, Gemini Flash)
+└── Chi phí nhân sự IT: 0 VNĐ (Tận dụng nguồn lực sẵn có của Viện và Ban sáng lập)
+
+                                     │
+                                     ▼
+[GIAI ĐOẠN 2: CHUẨN HÓA (6 - 12 THÁNG) | 1.000 - 3.000 DN]
+├── 01 Kỹ sư Trưởng Hệ Thống (Fullstack Tech Lead - Toàn thời gian)
+│   └── Phụ trách: Bảo trì Supabase, mở rộng Cổng CLB & Giải Đấu Thể Thao, API tích hợp
+├── 01 Chuyên viên Dữ liệu & Chăm Sóc Hội Viên Số (Data & Digital Community Ops)
+│   └── Phụ trách: Khảo sát chẩn đoán SME, gắn tag, đồng bộ báo cáo lãnh đạo
+└── Chi phí nhân sự: Trích từ quỹ hội phí Cấp 2 và tài trợ giải đấu thể thao (~25 - 35 triệu/tháng)
+
+                                     │
+                                     ▼
+[GIAI ĐOẠN 3: BỨT PHÁ (NĂM 2 - NĂM 3) | 5.000 - 10.000+ DN ASEAN]
+├── 01 Giám đốc Công nghệ & Dữ liệu (CTO / Head of Digital Ecosystem)
+│   └── Chiến lược công nghệ, bảo mật, đối tác kết nối quốc tế
+├── 01 Kỹ sư Ứng Dụng Di Động & LMS (Mobile App & LMS Specialist)
+│   └── Phát triển tính năng mới trên App iOS/Android, thư viện bài giảng video
+├── 01 Chuyên viên AI & Phân Tích Định Lượng (AI & Business Intelligence Specialist)
+│   └── Vận hành thuật toán AI Matchmaking, báo cáo định lượng ARI, tự động hóa truyền thông
+└── 01 Cán bộ Kỹ thuật Hiện trường (On-site Tech Support - Bán thời gian / Theo sự kiện)
+    └── Hỗ trợ check-in sự kiện, màn hình LED, Live Leaderboard tại các giải đấu thể thao
+└── Chi phí nhân sự: Chiếm 3 - 5% tổng ngân sách vận hành của Viện (~60 - 80 triệu/tháng)
 ```
 
-### 3.1. Ban Văn Hóa, Thể Thao & Mạng Lưới Câu Lạc Bộ Doanh Nhân (MỚI)
-- **Cổng Quản Trị Mạng Lưới Câu Lạc Bộ (Club Management Portal):**
-  - Quản lý danh sách thành viên và lịch sinh hoạt của các CLB chuyên đề: **CLB Golf Doanh nhân ASEAN, CLB Pickleball & Tennis Doanh nhân, CLB Chạy bộ kết nối, CLB Nữ Doanh nhân, CLB Văn hóa - Nghệ thuật & Doanh nhân yêu sách**.
-  - Tích hợp tính năng điểm danh số hóa (QR Check-in), thông báo lịch sinh hoạt định kỳ qua Zalo/Email và bảng tin chia sẻ nội bộ giữa các thành viên CLB.
-- **Hệ Thống Tổ Chức Giải Đấu Thể Thao Doanh Nghiệp (Tournament & League Engine):**
-  - **Cổng đăng ký thi đấu trực tuyến:** Cho phép các doanh nghiệp đăng ký đoàn vận động viên, nộp hồ sơ, chọn bảng đấu (Đôi nam, Đôi nữ, Đồng đội doanh nghiệp).
-  - **Thuật toán xếp lịch & chia bảng tự động (Bracket Engine):** Tự động chia bảng thi đấu vòng tròn (Round Robin) hoặc đấu loại trực tiếp (Single/Double Elimination).
-  - **Bảng điểm trực tuyến thời gian thực (Live Leaderboard & Scoring):** Trọng tài hoặc ban thư ký cập nhật tỷ số ngay tại sân thi đấu qua điện thoại; bảng xếp hạng cập nhật tức thời trên màn hình LED sân đấu và website giải đấu.
-  - **Cổng Số Hóa Quyền Lợi Tài Trợ (Sponsorship Digital Hub):** Trưng bày logo nhà tài trợ (Kim cương, Vàng, Bạc), gian hàng ảo giới thiệu sản phẩm doanh nghiệp tài trợ, vinh danh trên các ấn phẩm số.
-  - **Gala Vinh Danh Văn Hóa Doanh Nhân:** Hệ thống bình chọn trực tuyến giải thưởng "Doanh nhân Văn hóa Tiêu biểu", đặt vé Gala và sơ đồ chỗ ngồi VIP.
+---
 
-### 3.2. Ban Truyền thông & Xây dựng Thương hiệu (Media & Brand)
-- **Công cụ tạo dựng nội dung số tự động (AI Content Studio):**
-  - Tự động chuyển đổi biên bản hội thảo khoa học, báo cáo nghiên cứu và kết quả giải đấu thể thao thành bài viết chuẩn SEO, bài đăng Facebook, LinkedIn, thông cáo báo chí.
-  - Tự động sản xuất video highlights, poster vinh danh vận động viên và nhà tài trợ giải đấu.
-- **Hệ thống phân phối truyền thông đa kênh (Omnichannel Automation):**
-  - Đẩy tin bài đồng thời lên Website Portal, Zalo OA, Email Newsletter.
+## 4. CHI TIẾT TỪNG KHOẢN MỤC CHI PHÍ KHI QUY MÔ TĂNG LÊN
 
-### 3.3. Ban Phát triển Đối tác Doanh nghiệp Việt Nam & Nước Ngoài
-- **CRM Đối tác Chuyên sâu & Nền tảng Phân tích Định lượng (Quantitative Business Analytics):**
-  - Đo lường và theo dõi chính xác từng đối tác: Quy mô doanh thu, năng lực cung ứng, giấy chứng nhận chất lượng (ISO, Halal, FDA).
-  - Chấm điểm **ASEAN Readiness Index (ARI Score: 0 - 100)** định lượng.
-  - Ghi nhận chỉ số tham gia hoạt động văn hóa - thể thao để tính điểm gắn kết (Engagement Score).
-- **Công cụ Ghép nối Doanh nghiệp Tự động (AI Trade Matchmaking Engine):**
-  - Tự động đối chiếu nhu cầu mua hàng của đối tác quốc tế với doanh nghiệp Việt Nam.
+### 4.1. Chi phí Cơ Sở Dữ Liệu (Database - Supabase)
+- **Dưới 500 DN:** Miễn phí trọn đời (500MB DB, 50.000 active users).
+- **Từ 1.000 - 3.000 DN:** Nâng lên gói **Supabase Pro** ($25/tháng $\approx$ 650.000 đ/tháng) cung cấp 8GB dung lượng, sao lưu hàng ngày tự động (Point-in-time Recovery).
+- **Từ 5.000 - 10.000 DN:** Bổ sung gói Compute Add-on ($50 - $100/tháng $\approx$ 1.300.000 - 2.500.000 đ/tháng) để đảm bảo tốc độ phản hồi < 50ms khi hàng ngàn doanh nhân cùng truy cập giải đấu hoặc check-in hội nghị.
 
-### 3.4. Ban Đào tạo & Nghiên cứu Khoa học
-- **Hệ sinh thái LMS Hybrid (Offline kết hợp Online):**
-  - Lớp học trực tiếp tại Viện kết hợp các bài học video micro-learning 5 - 10 phút.
-  - Tự động xuất chứng chỉ số hóa (Digital Certificate) có mã QR tra cứu tính chính thống.
+### 4.2. Chi phí Video Streaming cho Học Viện LMS
+- Doanh nhân học micro-learning qua video cần chất lượng cao và không có quảng cáo.
+- Sử dụng **Cloudflare Stream**: Chỉ tính tiền theo phút xem thực tế ($5 cho 1.000 phút xem và $5 cho 1.000 phút lưu trữ).
+- Với quy mô 3.000 học viên, chi phí video streaming chỉ khoảng **1.000.000 - 2.500.000 đ/tháng**, rẻ hơn 80% so với mua các nền tảng LMS trọn gói của nước ngoài.
 
-### 3.5. Ban Văn phòng, Thư ký & Ban Lãnh đạo
-- **Executive BI Dashboard:** Nắm bắt toàn bộ chỉ số hội viên mới, tình hình tài trợ giải đấu, doanh thu hoạt động và tỷ lệ chuyển đổi hội viên Cấp 2.
+### 4.3. Chi phí Thông Báo Zalo ZNS & Email Tự Động
+- Email (Resend/Amazon SES): Gửi 50.000 email/tháng chỉ tốn khoảng $10 - $20 ($\approx$ 250.000 - 500.000 đ/tháng).
+- Tin nhắn thông báo Zalo ZNS (xác nhận đăng ký giải đấu, lịch sinh hoạt CLB): Giá trung bình 200 - 300 đ/tin. Với 5.000 lượt thông báo/tháng, chi phí khoảng **1.000.000 - 1.500.000 đ/tháng**.
+
+### 4.4. Chi phí Trí Tuệ Nhân Tạo (AI API Tokens)
+- Sử dụng mô hình **Gemini 1.5 Flash** và **DeepSeek V3**: Giá thành cực kỳ rẻ (chỉ khoảng $0.075 / 1 triệu tokens đầu vào).
+- Chi phí để AI đọc và tóm tắt 1 hồ sơ doanh nghiệp hoặc tạo 1 kịch bản bài viết truyền thông chưa đến **50 Đồng (VNĐ)**.
+- Ngay cả khi phục vụ 10.000 doanh nghiệp với tần suất tương tác cao, ngân sách AI chỉ tốn khoảng **1.500.000 - 3.000.000 đ/tháng**.
 
 ---
 
-## 4. CHI TIẾT CÁC HẠNG MỤC TRIỂN KHAI SỚM (PHASE 1: 0 - 60 NGÀY)
+## 5. ĐÁNH GIÁ TÍNH KHẢ THI VÀ HIỆU QUẢ KINH TẾ (ROI ANALYSIS)
 
-### 4.1. Hạng mục 1: Website Portal Viện EDRI
-- Khẳng định tính chính thống thuộc Hội Nghiên cứu Khoa học Đông Nam Á - Việt Nam (SEARAV).
-- Giới thiệu Viện trưởng TS. Lê Thị Huyền Trang và Hội đồng Quản lý.
+| Chỉ số tài chính | Quy mô 500 DN | Quy mô 2.000 DN | Quy mô 10.000 DN |
+| :--- | :---: | :---: | :---: |
+| **Doanh thu ước tính của Viện** (Hội phí, đào tạo, tài trợ thể thao) | ~300 - 500 Triệu đ | ~2 - 3 Tỷ đ / năm | ~8 - 15 Tỷ đ / năm |
+| **Tổng chi phí hạ tầng CNTT/năm** | **0 VNĐ** | ~38 Triệu đ / năm | ~130 - 180 Triệu đ / năm |
+| **Tổng chi phí nhân sự IT/năm** | **0 VNĐ** | ~300 - 360 Triệu đ / năm| ~700 - 900 Triệu đ / năm |
+| **Tỷ lệ chi phí CNTT / Tổng doanh thu** | **0%** | **~11 - 13%** | **~8 - 10%** |
 
-### 4.2. Hạng mục 2: Cổng Ghi Nhận Doanh Nghiệp (Intake Gateway)
-- Form 3 bước khảo sát điểm nghẽn doanh nghiệp và thu thập nguyện vọng tham gia các CLB thể thao/văn hóa.
-
-### 4.3. Hạng mục 3: Mini-CRM & Phân Loại Hội Viên Tự Động
-- Quản trị hội viên 2 cấp độ và quản lý danh bạ thành viên các CLB ban đầu.
-
----
-
-## 5. DỰ TOÁN TƯỢNG TRƯNG & NGUỒN LỰC TÀI CHÍNH TỰ CHỦ
-
-| Giai đoạn | Quy mô Doanh nghiệp | Nền tảng công nghệ chính | Chi phí hàng tháng | Nguồn thu bù đắp |
-| :--- | :--- | :--- | :---: | :--- |
-| **Giai đoạn 1 (0 - 6 tháng)** | 200 - 500 DN | Portal + Cổng Intake + Mini-CRM (Supabase, Cloudflare Free) | **0 VNĐ** | Tận dụng 100% Free Tier & Vibe Coding |
-| **Giai đoạn 2 (6 - 12 tháng)**| 500 - 2.000 DN | CDP 360° + Cổng CLB & Giải Đấu Thể Thao + AI Content | **600.000 - 1.200.000 đ** | Phí hội viên Cấp 2 & **Tài trợ giải đấu thể thao** |
-| **Giai đoạn 3 (Năm 2 - Năm 3)**| 2.000 - 10.000+ DN| LMS Hybrid + Mobile App + Sàn B2B ASEAN Matchmaking | **3.000.000 - 7.000.000 đ** | Trích 2 - 3% từ quỹ tài trợ giải đấu & đào tạo |
-
-*Điểm đặc biệt:* Nguồn tài trợ từ các **Giải đấu Golf / Pickleball / Tennis Doanh nhân ASEAN** mang lại dòng tiền xã hội hóa rất lớn, giúp hệ sinh thái công nghệ tự chủ tài chính hoàn toàn mà không cần ngân sách Viện cấp.
+**Kết luận điều hành:** Đề án công nghệ được thiết kế để **tự nuôi sống chính nó**. Chi phí công nghệ không phải là "khoản chi tiêu mất đi" mà là **đòn bẩy tạo ra doanh thu gấp 10 lần** thông qua việc quản lý hội viên chặt chẽ, tổ chức giải đấu quy mô thu hút tài trợ và mở rộng các khóa đào tạo doanh nhân.
