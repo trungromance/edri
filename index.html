@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Án Hệ Sinh Thái Công Nghệ Viện EDRI (2026 - 2029)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#FDF2F4',
+                            100: '#FBE8EB',
+                            200: '#F6D2D8',
+                            300: '#EAA5B1',
+                            500: '#C5304C',
+                            600: '#A31D36',
+                            700: '#800020', // Đỏ đun nhận diện chủ đạo
+                            800: '#68001A',
+                            900: '#4D0013',
+                            950: '#33000C',
+                        },
+                        charcoal: {
+                            800: '#1E293B',
+                            900: '#0F172A',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A;
+            color: #0F172A;
+            user-select: none;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .slide {
+            display: none;
+            width: 95vw;
+            max-width: 1650px;
+            height: 92vh;
+            background: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            animation: slideEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes slideEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(0.99);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        /* Staggered card animations */
+        .slide.active .anim-card {
+            animation: cardFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .slide.active .anim-card:nth-child(1) { animation-delay: 0.05s; }
+        .slide.active .anim-card:nth-child(2) { animation-delay: 0.12s; }
+        .slide.active .anim-card:nth-child(3) { animation-delay: 0.19s; }
+        .slide.active .anim-card:nth-child(4) { animation-delay: 0.26s; }
+
+        @keyframes cardFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom scrollbar thanh lịch */
+        .slide::-webkit-scrollbar {
+            width: 8px;
+        }
+        .slide::-webkit-scrollbar-thumb {
+            background-color: #CBD5E1;
+            border-radius: 4px;
+        }
+        /* Badges */
+        .badge-maroon {
+            background-color: #FDF2F4;
+            color: #800020;
+            border: 1px solid #F6D2D8;
+        }
+        /* Gantt bar styles */
+        .gantt-bar {
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #FFFFFF;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            transition: all 0.25s ease;
+        }
+        .gantt-bar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+        .gantt-bar-maroon {
+            background: linear-gradient(90deg, #800020 0%, #A31D36 100%);
+        }
+        .gantt-bar-gold {
+            background: linear-gradient(90deg, #D97706 0%, #F59E0B 100%);
+        }
+        .gantt-bar-slate {
+            background: linear-gradient(90deg, #475569 0%, #64748B 100%);
+        }
+        .gantt-bar-blue {
+            background: linear-gradient(90deg, #1E3A8A 0%, #3B82F6 100%);
+        }
+
+        /* Interactive card hover */
+        .interactive-card {
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(128, 0, 32, 0.15);
+            border-color: #800020;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Presentation Slide Container -->
+    <div class="slide-container" id="presentationContainer">
+
+        <!-- ==================== SLIDE 1: TRANG BÌA (COVER SLIDE) ==================== -->
+        <div class="slide active p-10 md:p-16 justify-between" id="slide-1">
+            <!-- Header Top -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-6">
+                <div class="flex items-center space-x-5">
+                    <div class="w-16 h-16 rounded-2xl bg-maroon-700 flex items-center justify-center text-white font-extrabold text-3xl shadow-lg border-2 border-amber-400">
+                        EDRI
+                    </div>
+                    <div>
+                        <h3 class="text-base font-extrabold uppercase tracking-widest text-maroon-700">Viện Nghiên cứu & Phát triển Doanh nhân Việt Nam - ASEAN</h3>
+                        <p class="text-sm text-slate-500 font-semibold mt-0.5">Trực thuộc Hội Nghiên cứu Khoa học Đông Nam Á - Việt Nam (SEARAV)</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="px-4 py-2 rounded-full text-sm font-bold bg-slate-100 text-slate-800 border border-slate-300 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Chiến Lược 2026 - 2029
+                    </span>
+                    <span class="px-4 py-2 rounded-full text-sm font-bold badge-maroon flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-maroon-700 animate-pulse"></span>
+                        Hệ Sinh Thái Số
+                    </span>
+                </div>
+            </div>
+
+            <!-- Hero Main Text -->
+            <div class="my-auto py-8">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full text-sm font-extrabold uppercase tracking-wider text-white bg-maroon-700 mb-6 shadow-md">
+                    <svg class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+                    Đề Án Công Nghệ Đột Phá Hỗ Trợ Phát Triển Cộng Đồng Doanh Nhân
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-charcoal-900 tracking-tight leading-tight">
+                    HỆ SINH THÁI CÔNG NGHỆ<br>
+                    <span class="text-maroon-700">PHÁT TRIỂN CỘNG ĐỒNG DOANH NHÂN</span>
+                </h1>
+                <p class="mt-6 text-2xl md:text-3xl text-slate-700 max-w-5xl font-medium leading-relaxed">
+                    Khởi động tinh gọn với phương án <span class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-lg">Zero Phí & Vibe Coding</span> — Mở rộng vững chắc thành nền tảng <strong class="text-charcoal-900 font-extrabold">LMS Đào Tạo, Mobile App & Sàn Giao Thương ASEAN</strong> sau 2 - 3 năm.
+                </p>
+
+                <!-- 4 Trụ Cột Nền Tảng -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mt-10 pt-8 border-t border-slate-200">
+                    <div class="p-5 rounded-2xl bg-slate-50 border-2 border-slate-200 interactive-card" onclick="openDetailModal('pillar-community')">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Trụ Cột 01</span>
+                            <svg class="w-6 h-6 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <div class="text-lg font-black text-charcoal-900 mt-2">Cộng Đồng Doanh Nhân</div>
+                        <div class="text-xs text-maroon-700 font-bold mt-1 flex items-center gap-1">Xem chi tiết →</div>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-slate-50 border-2 border-slate-200 interactive-card" onclick="openDetailModal('pillar-edu')">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Trụ Cột 02</span>
+                            <svg class="w-6 h-6 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                        </div>
+                        <div class="text-lg font-black text-charcoal-900 mt-2">Đào Tạo & LMS Chuyên Gia</div>
+                        <div class="text-xs text-maroon-700 font-bold mt-1 flex items-center gap-1">Xem chi tiết →</div>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-slate-50 border-2 border-slate-200 interactive-card" onclick="openDetailModal('pillar-trade')">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Trụ Cột 03</span>
+                            <svg class="w-6 h-6 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        </div>
+                        <div class="text-lg font-black text-charcoal-900 mt-2">Xúc Tiến Thương Mại ASEAN</div>
+                        <div class="text-xs text-maroon-700 font-bold mt-1 flex items-center gap-1">Xem chi tiết →</div>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-maroon-50 border-2 border-maroon-600 interactive-card" onclick="openDetailModal('cost-zero')">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-maroon-700 uppercase tracking-wider">Giải Pháp Thực Hiện</span>
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="text-lg font-black text-maroon-900 mt-2">Zero Ngân Sách Khởi Đầu</div>
+                        <div class="text-xs text-emerald-700 font-bold mt-1 flex items-center gap-1">Xem chi tiết →</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="flex items-center justify-between text-base text-slate-600 pt-5 border-t border-slate-200 font-medium">
+                <div>Chủ trì: <strong>Ban Lãnh Đạo & Bộ Phận Chiến Lược Dữ Liệu Viện EDRI</strong></div>
+                <div>Điều hướng: Nhấn <kbd class="px-2.5 py-1 bg-slate-100 border border-slate-300 rounded font-mono font-bold text-slate-800">Phím →</kbd> hoặc nút điều khiển bên dưới</div>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 2: TRIẾT LÝ CHIẾN LƯỢC ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-2">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">01. Định Hướng Cốt Lõi</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Triết Lý: Bắt Đầu Đơn Giản - Tầm Nhìn Mở Rộng 2-3 Năm</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Nguyên Lý Composable Scale-Up</span>
+            </div>
+
+            <!-- Content Body (2 Columns Big Contrast) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto py-4">
+                <!-- Box 1: Bài toán trước mắt (6 tháng) -->
+                <div class="p-8 rounded-3xl bg-slate-50 border-2 border-slate-300 flex flex-col justify-between anim-card">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="px-3.5 py-1.5 rounded-lg bg-slate-200 text-charcoal-900 font-black text-sm uppercase flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                Giai Đoạn Khởi Đầu (0 - 6 Tháng)
+                            </span>
+                            <span class="text-emerald-700 font-black text-base">Ngân Sách: 0 VNĐ</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-charcoal-900 mt-4">BÀI TOÁN TRƯỚC MẮT: ĐƠN GIẢN, DỄ LÀM, RA MẮT NGAY</h3>
+                        <p class="text-lg text-slate-600 mt-3 leading-relaxed">
+                            Không vẽ ra các hệ thống cồng kềnh, đắt đỏ khi chưa có nguồn thu. Tập trung tối đa vào <strong>bộ ba hạt nhân</strong> vận hành được ngay trong 14 ngày:
+                        </p>
+                        <div class="mt-6 space-y-4">
+                            <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-3 interactive-card" onclick="openDetailModal('quickwin-portal')">
+                                <span class="w-8 h-8 rounded-lg bg-maroon-100 text-maroon-800 font-bold flex items-center justify-center shrink-0 text-base">1</span>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="text-base font-bold text-charcoal-900">Website Portal Giới Thiệu Viện</h4>
+                                        <span class="text-xs text-maroon-700 font-bold">Chi tiết ↗</span>
+                                    </div>
+                                    <p class="text-sm text-slate-500 mt-0.5">Khẳng định vị thế thể chế, uy tín khoa học, tin tức và phễu thu hút.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-3 interactive-card" onclick="openDetailModal('quickwin-intake')">
+                                <span class="w-8 h-8 rounded-lg bg-maroon-100 text-maroon-800 font-bold flex items-center justify-center shrink-0 text-base">2</span>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="text-base font-bold text-charcoal-900">Cổng Ghi Nhận Doanh Nghiệp (Intake Form)</h4>
+                                        <span class="text-xs text-maroon-700 font-bold">Chi tiết ↗</span>
+                                    </div>
+                                    <p class="text-sm text-slate-500 mt-0.5">Khảo sát điểm nghẽn doanh nghiệp 3 phút trên điện thoại kèm mã giới thiệu.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-3 interactive-card" onclick="openDetailModal('quickwin-crm')">
+                                <span class="w-8 h-8 rounded-lg bg-maroon-100 text-maroon-800 font-bold flex items-center justify-center shrink-0 text-base">3</span>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="text-base font-bold text-charcoal-900">Mini-CRM & Dashboard Dữ Liệu</h4>
+                                        <span class="text-xs text-maroon-700 font-bold">Chi tiết ↗</span>
+                                    </div>
+                                    <p class="text-sm text-slate-500 mt-0.5">Tập trung dữ liệu, phân loại hội viên, tự động báo Telegram/Zalo cho Trưởng ban.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 text-sm font-bold text-slate-600 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>Mục tiêu: Sàng lọc 200 doanh nghiệp đầu tiên & phục vụ sự kiện cuối năm 2026.</span>
+                    </div>
+                </div>
+
+                <!-- Box 2: Tầm nhìn 2 - 3 năm -->
+                <div class="p-8 rounded-3xl bg-maroon-50 border-2 border-maroon-600 flex flex-col justify-between shadow-md anim-card">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="px-3.5 py-1.5 rounded-lg bg-maroon-700 text-white font-black text-sm uppercase flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                Tầm Nhìn (2 - 3 Năm Sau)
+                            </span>
+                            <span class="text-maroon-900 font-black text-base">Hệ Sinh Thái Mở Rộng</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-maroon-950 mt-4">BỨC TRANH LỚN: MẠNH MẼ, ĐA NỀN TẢNG, TỰ CHỦ</h3>
+                        <p class="text-lg text-maroon-900 mt-3 leading-relaxed">
+                            Khi Viện đã tích lũy hàng ngàn doanh nghiệp và có dòng tiền từ hội phí Cấp 2 cùng hoạt động đào tạo/xúc tiến, hệ thống tự động nở rộng thành:
+                        </p>
+                        <div class="mt-6 space-y-4">
+                            <div class="p-4 rounded-xl bg-white border border-maroon-200 flex items-start gap-3 interactive-card" onclick="openDetailModal('lms-detail')">
+                                <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 font-bold flex items-center justify-center shrink-0 text-base">★</span>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="text-base font-bold text-charcoal-900">Hệ Thống Đào Tạo LMS Hybrid (Online & Offline)</h4>
+                                        <span class="text-xs text-maroon-700 font-bold">Chi tiết ↗</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 mt-0.5">Học viện doanh nhân số: Micro-learning, khảo sát chẩn đoán và chứng chỉ số QR.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white border border-maroon-200 flex items-start gap-3 interactive-card" onclick="openDetailModal('app-detail')">
+                                <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 font-bold flex items-center justify-center shrink-0 text-base">★</span>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="text-base font-bold text-charcoal-900">Mobile App Doanh Nhân EDRI (iOS & Android)</h4>
+                                        <span class="text-xs text-maroon-700 font-bold">Chi tiết ↗</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 mt-0.5">Thẻ hội viên số, danh bạ doanh nhân bảo mật, đặt lịch cố vấn chuyên gia 1:1.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white border border-maroon-200 flex items-start gap-3 interactive-card" onclick="openDetailModal('trade-detail')">
+                                <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 font-bold flex items-center justify-center shrink-0 text-base">★</span>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="text-base font-bold text-charcoal-900">Sàn Xúc Tiến Giao Thương Số ASEAN</h4>
+                                        <span class="text-xs text-maroon-700 font-bold">Chi tiết ↗</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 mt-0.5">Thuật toán AI tự động ghép đôi (Matchmaking) doanh nghiệp Việt với đối tác quốc tế.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-maroon-200 text-sm font-bold text-maroon-900 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-maroon-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        <span>Nền tảng được may đo để mở rộng tự nhiên — Không bao giờ phải "đập đi xây lại".</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 2 / 12</span>
+                <span>Click vào bất kỳ khối thành phần nào để xem chi tiết nghiệp vụ</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 3: BẢN ĐỒ HỆ SINH THÁI 3 NĂM ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-3">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">02. Bản Đồ Tổng Quan</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Bản Đồ Hệ Sinh Thái Công Nghệ EDRI (2026 - 2029)</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Bức Tranh Tổng Thể 3 Năm</span>
+            </div>
+
+            <!-- Map Layout -->
+            <div class="grid grid-cols-3 gap-6 my-auto py-3">
+                <!-- Zone 1: Năm 1 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border-2 border-slate-300 flex flex-col justify-between anim-card">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                            <span class="text-xs font-black px-3 py-1 rounded bg-slate-800 text-white uppercase flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                NĂM 1 (2026 - 2027)
+                            </span>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Chi phí: 0 VNĐ</span>
+                        </div>
+                        <h4 class="text-xl font-black text-charcoal-900 mt-3">XÂY MÓNG & BỘ BA HẠT NHÂN</h4>
+                        <div class="mt-4 space-y-3 text-base text-slate-700">
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-xs interactive-card" onclick="openDetailModal('quickwin-portal')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-charcoal-900">Website Portal Thể Chế</strong>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-500 mt-0.5">Truyền thông định vị, cơ cấu viện, tin tức.</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-xs interactive-card" onclick="openDetailModal('quickwin-intake')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-charcoal-900">Cổng Intake & Chẩn Đoán</strong>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-500 mt-0.5">Khảo sát điểm nghẽn 3 phút, mã giới thiệu.</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-xs interactive-card" onclick="openDetailModal('quickwin-crm')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-charcoal-900">Mini-CRM Phân Cấp 1 & 2</strong>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-500 mt-0.5">Quản lý phễu hội viên, đồng bộ Google Sheets.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-slate-200 rounded-xl text-center text-sm font-bold text-slate-800 flex items-center justify-center gap-1.5">
+                        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        Mục tiêu: 500 - 1.000 Doanh nghiệp
+                    </div>
+                </div>
+
+                <!-- Zone 2: Năm 2 -->
+                <div class="p-6 rounded-2xl bg-maroon-50 border-2 border-maroon-300 flex flex-col justify-between anim-card">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-maroon-200 pb-3">
+                            <span class="text-xs font-black px-3 py-1 rounded bg-maroon-700 text-white uppercase flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                NĂM 2 (2027 - 2028)
+                            </span>
+                            <span class="text-xs font-bold text-maroon-800 bg-maroon-100 px-2 py-0.5 rounded border border-maroon-200">Tự chủ dòng tiền</span>
+                        </div>
+                        <h4 class="text-xl font-black text-maroon-950 mt-3">CHUẨN HÓA & LMS ĐÀO TẠO</h4>
+                        <div class="mt-4 space-y-3 text-base text-slate-700">
+                            <div class="p-3 bg-white rounded-xl border border-maroon-200 shadow-xs interactive-card" onclick="openDetailModal('lms-detail')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-maroon-900">Nền Tảng Đào Tạo LMS Hybrid</strong>
+                                    <svg class="w-4 h-4 text-maroon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-500 mt-0.5">Học trực tiếp kết hợp bài giảng số & cấp chứng chỉ.</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-maroon-200 shadow-xs interactive-card" onclick="openDetailModal('expert-matching')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-maroon-900">Cổng Điều Phối Chuyên Gia 1:1</strong>
+                                    <svg class="w-4 h-4 text-maroon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-500 mt-0.5">Đặt lịch tư vấn chẩn đoán chuyên sâu có thu phí.</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-maroon-200 shadow-xs interactive-card" onclick="openDetailModal('ai-media')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-maroon-900">Xưởng AI Content Truyền Thông</strong>
+                                    <svg class="w-4 h-4 text-maroon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-500 mt-0.5">Tự động hóa sản xuất bài viết, phân phối đa kênh.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-maroon-200 rounded-xl text-center text-sm font-bold text-maroon-900 flex items-center justify-center gap-1.5">
+                        <svg class="w-4 h-4 text-maroon-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        Mục tiêu: 2.000 - 5.000 Doanh nghiệp
+                    </div>
+                </div>
+
+                <!-- Zone 3: Năm 3 -->
+                <div class="p-6 rounded-2xl bg-charcoal-900 text-white border-2 border-charcoal-800 flex flex-col justify-between anim-card">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+                            <span class="text-xs font-black px-3 py-1 rounded bg-amber-500 text-charcoal-950 uppercase flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                NĂM 3 (2028 - 2029)
+                            </span>
+                            <span class="text-xs font-bold text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800">Bứt phá Quốc tế</span>
+                        </div>
+                        <h4 class="text-xl font-black text-amber-400 mt-3">MOBILE APP & GIAO THƯƠNG ASEAN</h4>
+                        <div class="mt-4 space-y-3 text-base text-slate-300">
+                            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 interactive-card" onclick="openDetailModal('app-detail')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-white">Mobile App EDRI (iOS & Android)</strong>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-400 mt-0.5">Thẻ hội viên điện tử, mạng lưới kết nối tức thời.</p>
+                            </div>
+                            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 interactive-card" onclick="openDetailModal('trade-detail')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-white">Sàn Ghép Đôi Giao Thương ASEAN</strong>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-400 mt-0.5">AI Matchmaking tự động kết nối đối tác 10 nước.</p>
+                            </div>
+                            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 interactive-card" onclick="openDetailModal('bi-detail')">
+                                <div class="flex items-center justify-between">
+                                    <strong class="text-white">Executive BI Data Intelligence</strong>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </div>
+                                <p class="text-sm text-slate-400 mt-0.5">Báo cáo phân tích định lượng vĩ mô thời gian thực.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-slate-800 rounded-xl text-center text-sm font-bold text-amber-400 border border-slate-700 flex items-center justify-center gap-1.5">
+                        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        Mục tiêu: 10.000+ Doanh nghiệp & Đối tác
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 3 / 12</span>
+                <span>Kiến trúc phân tầng bảo đảm sự kế thừa liên tục giữa các năm</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 4: BIỂU ĐỒ GANTT LỘ TRÌNH ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-4">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">03. Tiến Độ Thực Thi</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Biểu Đồ Gantt (Gantt Chart): Tiến Độ & Các Cột Mốc</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Milestone & Timeline</span>
+            </div>
+
+            <!-- Gantt Chart Container -->
+            <div class="my-auto py-2">
+                <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 space-y-4 shadow-sm">
+                    <!-- Timeline Header Row -->
+                    <div class="grid grid-cols-12 text-sm font-extrabold text-charcoal-900 pb-3 border-b-2 border-slate-300">
+                        <div class="col-span-4 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                            HẠNG MỤC CÔNG VIỆC
+                        </div>
+                        <div class="col-span-2 text-center text-maroon-700 bg-maroon-50 py-1 rounded">Q4/2026 (1-3M)</div>
+                        <div class="col-span-2 text-center text-slate-700 bg-slate-200 py-1 rounded">Q1-Q2/2027 (3-6M)</div>
+                        <div class="col-span-2 text-center text-slate-700 bg-slate-200 py-1 rounded">Q3-Q4/2027 (6-12M)</div>
+                        <div class="col-span-2 text-center text-slate-700 bg-slate-200 py-1 rounded">2028-2029 (2-3Y)</div>
+                    </div>
+
+                    <!-- Task 1: Bộ ba hạt nhân -->
+                    <div class="grid grid-cols-12 items-center text-sm anim-card">
+                        <div class="col-span-4 font-bold text-charcoal-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-maroon-700"></span>
+                            1. Website Portal & Cổng Intake & Mini-CRM
+                        </div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-maroon justify-center cursor-pointer" onclick="openDetailModal('quickwin-portal')">14 Ngày (0 VNĐ)</div>
+                        </div>
+                        <div class="col-span-6 px-1">
+                            <div class="h-2 bg-slate-200 rounded"></div>
+                        </div>
+                    </div>
+
+                    <!-- Task 2: Onboarding & Sự kiện cuối năm -->
+                    <div class="grid grid-cols-12 items-center text-sm anim-card">
+                        <div class="col-span-4 font-bold text-charcoal-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-maroon-700"></span>
+                            2. Onboarding 200 DN & Sự kiện Kỷ niệm 5 năm
+                        </div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-maroon justify-center cursor-pointer" onclick="openDetailModal('pillar-community')">Tháng 11 - 12</div>
+                        </div>
+                        <div class="col-span-6 px-1">
+                            <div class="h-2 bg-slate-200 rounded"></div>
+                        </div>
+                    </div>
+
+                    <!-- Task 3: CDP & Cổng Chuyên gia -->
+                    <div class="grid grid-cols-12 items-center text-sm anim-card">
+                        <div class="col-span-4 font-bold text-charcoal-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+                            3. Nâng cấp CDP 360° & Cổng Chuyên gia cố vấn
+                        </div>
+                        <div class="col-span-2 px-1"></div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-slate justify-center cursor-pointer" onclick="openDetailModal('expert-matching')">Hoàn thành</div>
+                        </div>
+                        <div class="col-span-4 px-1">
+                            <div class="h-2 bg-slate-200 rounded"></div>
+                        </div>
+                    </div>
+
+                    <!-- Task 4: AI Content Studio & Phân tích định lượng -->
+                    <div class="grid grid-cols-12 items-center text-sm anim-card">
+                        <div class="col-span-4 font-bold text-charcoal-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+                            4. AI Content Studio & Phân tích Định lượng DN
+                        </div>
+                        <div class="col-span-2 px-1"></div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-slate justify-center cursor-pointer" onclick="openDetailModal('ai-media')">Thử nghiệm</div>
+                        </div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-slate justify-center cursor-pointer" onclick="openDetailModal('quantitative-analytics')">Vận hành</div>
+                        </div>
+                        <div class="col-span-2 px-1"></div>
+                    </div>
+
+                    <!-- Task 5: Hệ thống LMS Đào tạo Hybrid -->
+                    <div class="grid grid-cols-12 items-center text-sm anim-card">
+                        <div class="col-span-4 font-bold text-charcoal-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+                            5. Nền tảng Đào tạo LMS Hybrid (Online/Offline)
+                        </div>
+                        <div class="col-span-4 px-1"></div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-gold justify-center cursor-pointer" onclick="openDetailModal('lms-detail')">Triển khai</div>
+                        </div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-gold justify-center cursor-pointer" onclick="openDetailModal('lms-detail')">Mở rộng</div>
+                        </div>
+                    </div>
+
+                    <!-- Task 6: Mobile App & Sàn B2B ASEAN -->
+                    <div class="grid grid-cols-12 items-center text-sm anim-card">
+                        <div class="col-span-4 font-bold text-charcoal-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-700"></span>
+                            6. Mobile App (iOS/Android) & Sàn Matchmaking ASEAN
+                        </div>
+                        <div class="col-span-6 px-1"></div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-blue justify-center cursor-pointer" onclick="openDetailModal('app-detail')">Nghiên cứu</div>
+                        </div>
+                        <div class="col-span-2 px-1">
+                            <div class="gantt-bar gantt-bar-blue justify-center cursor-pointer" onclick="openDetailModal('app-detail')">Bùng nổ (App)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestone Callout -->
+                <div class="grid grid-cols-3 gap-4 mt-4">
+                    <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center interactive-card" onclick="openDetailModal('quickwin-portal')">
+                        <span class="text-xs font-bold text-maroon-700 uppercase">Cột Mốc 1 (14 Ngày)</span>
+                        <div class="text-sm font-extrabold text-charcoal-900 mt-0.5">Sẵn Sàng Bộ Ba Hạt Nhân</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center interactive-card" onclick="openDetailModal('expert-matching')">
+                        <span class="text-xs font-bold text-amber-700 uppercase">Cột Mốc 2 (6 Tháng)</span>
+                        <div class="text-sm font-extrabold text-charcoal-900 mt-0.5">Vận Hành Hội Viên Cấp 2</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center interactive-card" onclick="openDetailModal('app-detail')">
+                        <span class="text-xs font-bold text-blue-700 uppercase">Cột Mốc 3 (Năm 2 - 3)</span>
+                        <div class="text-sm font-extrabold text-charcoal-900 mt-0.5">Khai Phóng LMS & Mobile App</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 4 / 12</span>
+                <span>Click trực tiếp vào các thanh Gantt Bar để xem chi tiết từng phân kỳ</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 5: CÔNG NGHỆ HỖ TRỢ TOÀN DIỆN CÁC PHÒNG BAN ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-5">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">04. Chức Năng Tổ Chức</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Công Nghệ Hỗ Trợ Toàn Diện Tất Cả Các Phòng Ban</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Hệ Thần Kinh Số (Digital Mesh)</span>
+            </div>
+
+            <!-- 4 Department Cards Grid -->
+            <div class="grid grid-cols-2 gap-6 my-auto py-3">
+                <!-- Dept 1: Truyền Thông -->
+                <div class="p-6 rounded-2xl bg-white border-2 border-slate-200 interactive-card anim-card" onclick="openDetailModal('ai-media')">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <h3 class="text-xl font-black text-charcoal-900 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-600"></span>
+                            BAN TRUYỀN THÔNG & THƯƠNG HIỆU
+                        </h3>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-50 text-rose-800">Omnichannel & AI</span>
+                    </div>
+                    <ul class="mt-4 space-y-2.5 text-base text-slate-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-maroon-700 font-bold">•</span>
+                            <span><strong>Xưởng nội dung số tự động (AI Content Studio):</strong> Tự động chuyển đổi biên bản tọa đàm, báo cáo khoa học thành bài viết website, bài đăng MXH và thông cáo báo chí.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-maroon-700 font-bold">•</span>
+                            <span><strong>Truyền thông đa kênh tự động:</strong> Tự động đẩy tin bài đồng thời lên Website Portal, Zalo OA, Email Newsletter.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-xs font-bold text-rose-700 flex items-center gap-1">Khám phá công nghệ Ban Truyền thông →</div>
+                </div>
+
+                <!-- Dept 2: Phát triển đối tác DN VN & QT -->
+                <div class="p-6 rounded-2xl bg-white border-2 border-slate-200 interactive-card anim-card" onclick="openDetailModal('quantitative-analytics')">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <h3 class="text-xl font-black text-charcoal-900 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                            BAN PHÁT TRIỂN ĐỐI TÁC DN VN & QUỐC TẾ
+                        </h3>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-blue-50 text-blue-800">CRM & AI Matchmaking</span>
+                    </div>
+                    <ul class="mt-4 space-y-2.5 text-base text-slate-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-700 font-bold">•</span>
+                            <span><strong>Nền tảng phân tích định lượng (Quantitative Analytics):</strong> Theo dõi chính xác sức khỏe doanh nghiệp, quy mô vốn, chứng chỉ xuất khẩu (ISO, Halal, FDA).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-700 font-bold">•</span>
+                            <span><strong>Thuật toán ghép đôi tự động (AI Matchmaking):</strong> Tự động so khớp nhu cầu mua hàng của đối tác quốc tế với danh mục sản phẩm của DN Việt Nam.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-xs font-bold text-blue-700 flex items-center gap-1">Khám phá công nghệ Ban Đối tác →</div>
+                </div>
+
+                <!-- Dept 3: Ban Đào tạo -->
+                <div class="p-6 rounded-2xl bg-white border-2 border-slate-200 interactive-card anim-card" onclick="openDetailModal('lms-detail')">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <h3 class="text-xl font-black text-charcoal-900 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-amber-600"></span>
+                            BAN ĐÀO TẠO & HỌC VIỆN DOANH NHÂN
+                        </h3>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-50 text-amber-800">LMS Hybrid Edu</span>
+                    </div>
+                    <ul class="mt-4 space-y-2.5 text-base text-slate-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-700 font-bold">•</span>
+                            <span><strong>Hệ thống LMS Hybrid (Offline & Online):</strong> Kết hợp lớp học tập trung tại Viện với nền tảng bài giảng số trực tuyến (Micro-learning).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-700 font-bold">•</span>
+                            <span><strong>Chứng chỉ số hóa định danh:</strong> Tự động xuất chứng chỉ đào tạo có gắn mã QR tra cứu tính chính thống trên website Viện.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-xs font-bold text-amber-700 flex items-center gap-1">Khám phá công nghệ Ban Đào tạo →</div>
+                </div>
+
+                <!-- Dept 4: Ban Lãnh đạo & Văn phòng -->
+                <div class="p-6 rounded-2xl bg-white border-2 border-slate-200 interactive-card anim-card" onclick="openDetailModal('bi-detail')">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <h3 class="text-xl font-black text-charcoal-900 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+                            BAN LÃNH ĐẠO & VĂN PHÒNG VIỆN
+                        </h3>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-50 text-emerald-800">Executive BI</span>
+                    </div>
+                    <ul class="mt-4 space-y-2.5 text-base text-slate-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-700 font-bold">•</span>
+                            <span><strong>Executive War Room Dashboard:</strong> Báo cáo chỉ số thời gian thực trên di động (số hội viên mới, phân loại ngành, tỷ lệ chuyển đổi).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-700 font-bold">•</span>
+                            <span><strong>Quản lý sự kiện thông minh:</strong> Check-in điểm danh tự động bằng mã QR, kiểm soát quyền lợi tham gia phiên gặp gỡ Lãnh đạo.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-xs font-bold text-emerald-700 flex items-center gap-1">Khám phá công nghệ Lãnh đạo →</div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 5 / 12</span>
+                <span>Công nghệ phục vụ người dùng — Tối ưu năng suất từng cán bộ chuyên trách</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 6: AI CONTENT STUDIO (BAN TRUYỀN THÔNG) ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-6">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">05. Ban Truyền Thông & Thương Hiệu</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Xưởng Tạo Dựng Nội Dung Số Tự Động (AI Media Studio)</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Omnichannel Automation</span>
+            </div>
+
+            <!-- Architecture of AI Media Studio -->
+            <div class="grid grid-cols-12 gap-8 my-auto py-3 items-center">
+                <!-- Left 5 cols -->
+                <div class="col-span-5 space-y-4">
+                    <div class="p-6 rounded-2xl bg-slate-50 border-2 border-slate-200 anim-card">
+                        <h4 class="text-lg font-black text-charcoal-900 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            Bài Toán Của Ban Truyền Thông
+                        </h4>
+                        <p class="text-base text-slate-600 mt-2 leading-relaxed">
+                            Nhân sự mỏng nhưng khối lượng hoạt động lớn: Hội thảo khoa học, ký kết ngoại giao, bản tin doanh nghiệp. Làm sao để sản xuất nội dung nhanh và phủ sóng đa kênh?
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-maroon-50 border-2 border-maroon-300 anim-card">
+                        <h4 class="text-lg font-black text-maroon-950 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            Giải Pháp: Xưởng AI Nội Dung Số
+                        </h4>
+                        <p class="text-base text-maroon-900 mt-2 leading-relaxed">
+                            Chỉ cần <strong>01 bản ghi âm hoặc biên bản tóm tắt cuộc họp</strong>, trợ lý AI chuyên biệt của Viện tự động "chế biến" thành trọn bộ ấn phẩm truyền thông trong vòng <strong>5 phút</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right 7 cols -->
+                <div class="col-span-7 space-y-3.5">
+                    <div class="p-4 rounded-xl bg-white border-2 border-slate-200 flex items-center gap-4 interactive-card anim-card" onclick="openDetailModal('ai-media-step1')">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 text-maroon-700 font-black text-lg flex items-center justify-center shrink-0">
+                            01
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-base font-bold text-charcoal-900">Thu Nhận Dữ Liệu Đầu Vào (Input)</div>
+                            <div class="text-sm text-slate-500">Tải biên bản họp, ghi âm tọa đàm, thông tin doanh nghiệp mới vào hệ thống.</div>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border-2 border-maroon-300 bg-maroon-50/50 flex items-center gap-4 interactive-card anim-card" onclick="openDetailModal('ai-media-step2')">
+                        <div class="w-12 h-12 rounded-xl bg-maroon-700 text-white font-black text-lg flex items-center justify-center shrink-0">
+                            02
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-base font-bold text-maroon-950">AI Trích Xuất & Biên Tập Nội Dung (Transformation)</div>
+                            <div class="text-sm text-slate-600">Tự động sinh: Bài báo website chuẩn SEO + Kịch bản video ngắn + Bài đăng Facebook.</div>
+                        </div>
+                        <svg class="w-5 h-5 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border-2 border-slate-200 flex items-center gap-4 interactive-card anim-card" onclick="openDetailModal('ai-media-step3')">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 text-maroon-700 font-black text-lg flex items-center justify-center shrink-0">
+                            03
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-base font-bold text-charcoal-900">Kiểm Duyệt 1 Chạm Bởi Cán Bộ (Human-in-the-loop)</div>
+                            <div class="text-sm text-slate-500">Phụ trách truyền thông kiểm tra, chỉnh sửa nhanh và bấm "Phê duyệt phát hành".</div>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border-2 border-slate-200 flex items-center gap-4 interactive-card anim-card" onclick="openDetailModal('ai-media-step4')">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 text-emerald-700 font-black text-lg flex items-center justify-center shrink-0">
+                            04
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-base font-bold text-charcoal-900">Phân Phối Đa Kênh Tức Thì (Omnichannel Blast)</div>
+                            <div class="text-sm text-slate-500">Đẩy tự động lên: Website Portal, Zalo OA, Email Newsletter & Mạng xã hội.</div>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 6 / 12</span>
+                <span>Nâng năng suất của 1 cán bộ truyền thông tương đương phòng nghiệp vụ 5 người</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 7: CRM & PHÂN TÍCH ĐỊNH LƯỢNG (BAN ĐỐI TÁC) ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-7">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">06. Ban Đối Tác Doanh Nghiệp</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">CRM & Nền Tảng Phân Tích Định Lượng (Quantitative Matching)</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Data-Driven Trade Promotion</span>
+            </div>
+
+            <!-- Body -->
+            <div class="grid grid-cols-12 gap-8 my-auto py-3">
+                <!-- Left 6 cols -->
+                <div class="col-span-6 space-y-4">
+                    <div class="p-6 rounded-2xl bg-slate-50 border-2 border-slate-200 anim-card">
+                        <h4 class="text-lg font-black text-charcoal-900 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            Chấm Điểm Sức Khỏe Doanh Nghiệp SME
+                        </h4>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                            Thay vì đánh giá chung chung, hệ thống CDP lượng hóa năng lực doanh nghiệp theo 4 chỉ số toán học:
+                        </p>
+                        <div class="grid grid-cols-2 gap-3 mt-4 text-sm font-bold">
+                            <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                <span class="text-maroon-700">1. Pháp Lý & Bản Quyền</span>
+                                <div class="text-xs text-slate-500 font-normal mt-0.5">Minh bạch pháp nhân, sở hữu trí tuệ</div>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                <span class="text-maroon-700">2. Chuẩn Chất Lượng</span>
+                                <div class="text-xs text-slate-500 font-normal mt-0.5">ISO, HACCP, FDA, Halal xuất khẩu</div>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                <span class="text-maroon-700">3. Sức Khỏe Tài Chính</span>
+                                <div class="text-xs text-slate-500 font-normal mt-0.5">Doanh thu, khả năng hấp thụ vốn</div>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                <span class="text-maroon-700">4. Mức Độ Số Hóa</span>
+                                <div class="text-xs text-slate-500 font-normal mt-0.5">ERP, CRM, thương mại điện tử</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-amber-50 border border-amber-300 text-sm font-bold text-amber-950 flex items-center justify-between interactive-card" onclick="openDetailModal('quantitative-analytics')">
+                        <span>Chỉ số Sẵn sàng Hội nhập ASEAN (ARI Score): 0 - 100 Điểm</span>
+                        <span class="px-3 py-1 rounded bg-amber-200 text-amber-900 text-xs">Xem công thức ↗</span>
+                    </div>
+                </div>
+
+                <!-- Right 6 cols -->
+                <div class="col-span-6 space-y-4">
+                    <div class="p-6 rounded-2xl bg-charcoal-900 text-white border-2 border-slate-800 anim-card">
+                        <div class="flex items-center justify-between border-b border-slate-700 pb-2">
+                            <span class="text-xs font-bold uppercase text-amber-400">THUẬT TOÁN AI MATCHMAKING TỰ ĐỘNG</span>
+                            <span class="text-xs text-slate-400">Vector Embeddings</span>
+                        </div>
+                        <h4 class="text-xl font-black text-white mt-3">Ghép Đôi Nhu Cầu Giao Thương B2B</h4>
+                        <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                            Khi đối tác quốc tế (Đại sứ quán, Thương vụ ASEAN) gửi yêu cầu tìm nhà cung ứng, AI tự động quét kho dữ liệu CDP của Viện để tìm kiếm doanh nghiệp Việt phù hợp nhất.
+                        </p>
+                        <div class="mt-4 p-3.5 bg-slate-800 rounded-xl border border-slate-700 text-xs font-mono space-y-1.5 text-slate-300">
+                            <div>• Nhu cầu: Nhập khẩu Nông sản chế biến sang Singapore</div>
+                            <div>• Tiêu chuẩn: Đạt chuẩn HACCP + Năng lực xuất khẩu 50 tấn/tháng</div>
+                            <div class="text-emerald-400 font-bold">➔ Kết quả: Tìm thấy 3 DN trong cộng đồng EDRI (Độ khớp: 94%)</div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border-2 border-slate-200 text-sm text-slate-700 interactive-card" onclick="openDetailModal('trade-detail')">
+                        <div class="flex items-center justify-between">
+                            <strong>Lợi ích xúc tiến thực chất:</strong>
+                            <span class="text-xs text-blue-700 font-bold">Xem quy trình kết nối ↗</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Giúp Ban Đối tác tự tin xúc tiến có chiều sâu, tạo ra các hợp đồng thương mại thực chất cho hội viên.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 7 / 12</span>
+                <span>Từ chối kết nối cảm tính — Lấy chỉ số định lượng làm thước đo hiệu quả</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 8: LMS HYBRID & MOBILE APP (MỞ RỘNG NĂM 2-3) ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-8">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">07. Nền Tảng Mở Rộng</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Hệ Thống LMS Đào Tạo Hybrid & Mobile App Doanh Nhân</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Năm 2 - Năm 3</span>
+            </div>
+
+            <!-- 2 Big Cards: LMS vs Mobile App -->
+            <div class="grid grid-cols-2 gap-8 my-auto py-3">
+                <!-- LMS Hybrid -->
+                <div class="p-8 rounded-3xl bg-slate-50 border-2 border-slate-200 flex flex-col justify-between anim-card interactive-card" onclick="openDetailModal('lms-detail')">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                            <span class="text-sm font-black px-3.5 py-1.5 rounded-lg bg-amber-600 text-white uppercase flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                HỌC VIỆN DOANH NHÂN
+                            </span>
+                            <span class="text-sm font-bold text-slate-600">LMS Hybrid</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-charcoal-900 mt-4">Hệ Thống Đào Tạo Hybrid (Offline & Online)</h3>
+                        <p class="text-base text-slate-600 mt-2 leading-relaxed">
+                            Mô hình đào tạo linh hoạt giải quyết trọn vẹn rào cản thời gian của các chủ doanh nghiệp:
+                        </p>
+                        <div class="mt-6 space-y-3.5 text-base text-slate-700">
+                            <div class="p-3.5 bg-white rounded-xl border border-slate-200">
+                                <strong>Lớp học Offline tại Viện:</strong> Điểm danh quét mã QR, tài liệu phát tay số hóa, tương tác chuyên gia thực chiến.
+                            </div>
+                            <div class="p-3.5 bg-white rounded-xl border border-slate-200">
+                                <strong>Học Online Micro-learning:</strong> Các bài học video ngắn 5 - 10 phút về pháp lý, thuế, nhân sự học trên điện thoại.
+                            </div>
+                            <div class="p-3.5 bg-white rounded-xl border border-slate-200">
+                                <strong>Chứng chỉ số hóa định danh:</strong> Tự động xuất chứng chỉ PDF có mã QR tra cứu hồ sơ học viên trên website Viện.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 text-sm font-bold text-amber-800 flex items-center justify-between">
+                        <span>🎓 Tạo nguồn thu đào tạo chuyên sâu & nuôi dưỡng hội viên Cấp 2.</span>
+                        <span class="text-xs text-slate-500 font-semibold">Xem kiến trúc ↗</span>
+                    </div>
+                </div>
+
+                <!-- Mobile App -->
+                <div class="p-8 rounded-3xl bg-maroon-50 border-2 border-maroon-600 flex flex-col justify-between shadow-md anim-card interactive-card" onclick="openDetailModal('app-detail')">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-maroon-200 pb-3">
+                            <span class="text-sm font-black px-3.5 py-1.5 rounded-lg bg-maroon-700 text-white uppercase flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                KẾT NỐI DI ĐỘNG
+                            </span>
+                            <span class="text-sm font-bold text-maroon-900">iOS & Android</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-maroon-950 mt-4">Ứng Dụng Di Động (Mobile App EDRI)</h3>
+                        <p class="text-base text-maroon-900 mt-2 leading-relaxed">
+                            Biến Viện thành người bạn đồng hành trong túi áo của hàng ngàn doanh nhân Việt Nam - ASEAN:
+                        </p>
+                        <div class="mt-6 space-y-3.5 text-base text-slate-800">
+                            <div class="p-3.5 bg-white rounded-xl border border-maroon-200">
+                                <strong>Thẻ Hội Viên Điện Tử:</strong> Phân hạng Bạc (Cấp 1) và Vàng/Đỏ đun (Cấp 2) check-in sự kiện một chạm.
+                            </div>
+                            <div class="p-3.5 bg-white rounded-xl border border-maroon-200">
+                                <strong>Danh Bạ Doanh Nhân Bảo Mật:</strong> Tìm kiếm đối tác theo ngành và gửi lời mời kết nối kinh doanh nội bộ.
+                            </div>
+                            <div class="p-3.5 bg-white rounded-xl border border-maroon-200">
+                                <strong>Đặt Lịch Cố Vấn 1:1:</strong> Chủ động chọn khung giờ và chuyên gia mong muốn để được tư vấn gỡ khó.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-maroon-200 text-sm font-bold text-maroon-900 flex items-center justify-between">
+                        <span>📱 Giữ chân hội viên lâu dài & tối đa hóa tỷ lệ tương tác mỗi ngày.</span>
+                        <span class="text-xs text-maroon-700 font-semibold">Xem kiến trúc ↗</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 8 / 12</span>
+                <span>Nâng tầm vị thế của Viện trở thành tổ chức tiên phong về chuyển đổi số</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 9: BỘ BA HẠT NHÂN KHỞI ĐỘNG (14 NGÀY) ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-9">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">08. Điểm Khởi Đầu Thực Tế</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Bộ Ba Hạt Nhân Triển Khai Sớm (Quick-Wins 14 Ngày Đầu)</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Bàn Giao Sử Dụng Ngay</span>
+            </div>
+
+            <!-- 3 Pillars Row -->
+            <div class="grid grid-cols-3 gap-6 my-auto py-3">
+                <!-- Item 1: Website -->
+                <div class="p-6 rounded-2xl bg-white border-2 border-slate-200 shadow-sm relative flex flex-col justify-between anim-card interactive-card" onclick="openDetailModal('quickwin-portal')">
+                    <div>
+                        <div class="px-3.5 py-1 rounded-full text-xs font-bold bg-maroon-700 text-white inline-block mb-3">
+                            HẠNG MỤC 01
+                        </div>
+                        <h3 class="text-2xl font-black text-charcoal-900">Website Portal Viện</h3>
+                        <p class="text-sm font-semibold text-slate-500 mt-1">Bản Sắc Thể Chế & Uy Tín</p>
+                        <div class="mt-4 space-y-2.5 text-base text-slate-700">
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                • Giới thiệu Viện trưởng TS. Lê Thị Huyền Trang & Hội đồng Quản lý.
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                • Tôn vinh tính chính thống khoa học thuộc Hội SEARAV.
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                • Nút kêu gọi hành động (CTA) dẫn thẳng vào Cổng Intake.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-slate-100 text-sm font-bold text-emerald-700 flex items-center justify-between">
+                        <span>⏱ Thời gian: 5 - 7 Ngày</span>
+                        <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs">Chi phí: 0đ</span>
+                    </div>
+                </div>
+
+                <!-- Item 2: Cổng Intake -->
+                <div class="p-6 rounded-2xl bg-maroon-50 border-2 border-maroon-600 shadow-md relative flex flex-col justify-between ring-2 ring-maroon-200 anim-card interactive-card" onclick="openDetailModal('quickwin-intake')">
+                    <div>
+                        <div class="px-3.5 py-1 rounded-full text-xs font-bold bg-amber-500 text-charcoal-900 inline-block mb-3">
+                            HẠNG MỤC 02 (TRỌNG TÂM)
+                        </div>
+                        <h3 class="text-2xl font-black text-maroon-950">Cổng Ghi Nhận Doanh Nghiệp</h3>
+                        <p class="text-sm font-semibold text-maroon-800 mt-1">Khảo Sát & Chẩn Đoán Thông Minh</p>
+                        <div class="mt-4 space-y-2.5 text-base text-slate-800">
+                            <div class="p-3 rounded-xl bg-white border border-maroon-200">
+                                • Form 3 bước tối ưu cho điện thoại: Điền nhanh trong 3 phút.
+                            </div>
+                            <div class="p-3 rounded-xl bg-white border border-maroon-200">
+                                • Chẩn đoán điểm nghẽn thực chất: Nhân sự, vốn, quản trị, ASEAN.
+                            </div>
+                            <div class="p-3 rounded-xl bg-white border border-maroon-200">
+                                • Mã giới thiệu (Referral ID) ghi nhận công sức từng Trưởng ban.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-maroon-200 text-sm font-bold text-maroon-900 flex items-center justify-between">
+                        <span>⏱ Thời gian: 3 - 5 Ngày</span>
+                        <span class="px-2.5 py-0.5 rounded bg-maroon-200 text-maroon-950 text-xs">Chi phí: 0đ</span>
+                    </div>
+                </div>
+
+                <!-- Item 3: Mini-CRM -->
+                <div class="p-6 rounded-2xl bg-white border-2 border-slate-200 shadow-sm relative flex flex-col justify-between anim-card interactive-card" onclick="openDetailModal('quickwin-crm')">
+                    <div>
+                        <div class="px-3.5 py-1 rounded-full text-xs font-bold bg-maroon-700 text-white inline-block mb-3">
+                            HẠNG MỤC 03
+                        </div>
+                        <h3 class="text-2xl font-black text-charcoal-900">Mini-CRM & Dashboard</h3>
+                        <p class="text-sm font-semibold text-slate-500 mt-1">Phân Loại Hội Viên Tự Động</p>
+                        <div class="mt-4 space-y-2.5 text-base text-slate-700">
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                • Tra cứu doanh nghiệp theo ngành nghề, khu vực, trạng thái.
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                • Phân quyền chăm sóc cho các Ban theo dõi hành trình 6 bước.
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                • Tự động gửi thư chào mừng & thông báo qua Telegram/Zalo.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-slate-100 text-sm font-bold text-emerald-700 flex items-center justify-between">
+                        <span>⏱ Thời gian: 3 - 4 Ngày</span>
+                        <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs">Chi phí: 0đ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 9 / 12</span>
+                <span>Ba hạng mục tạo thành một cỗ máy hoàn chỉnh thu hút và sàng lọc doanh nghiệp</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 10: SO SÁNH VIBE CODING VS OPEN SOURCE CŨ ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-10">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">09. Lựa Chọn Công Nghệ</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">So Sánh: Open-Source Truyền Thống vs. Vibe Coding AI</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Bản Chất & Hiệu Quả Kinh Tế</span>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="my-auto py-2">
+                <div class="overflow-hidden rounded-2xl border-2 border-slate-200 shadow-sm">
+                    <table class="w-full text-left border-collapse text-base">
+                        <thead>
+                            <tr class="bg-slate-100 text-charcoal-900 font-black border-b-2 border-slate-300">
+                                <th class="p-4 w-1/4">Tiêu chí so sánh</th>
+                                <th class="p-4 w-1/4 text-slate-500">Thuê Agency gia công</th>
+                                <th class="p-4 w-1/4 text-slate-600">Open-Source cũ (Odoo/WP)</th>
+                                <th class="p-4 w-1/4 bg-maroon-100 text-maroon-900 font-black">Vibe Coding AI (Chọn Cho EDRI)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-800">
+                            <tr>
+                                <td class="p-4 font-bold text-charcoal-900">Chi phí khởi tạo</td>
+                                <td class="p-4 text-red-600 font-bold">150 - 300 Triệu đ</td>
+                                <td class="p-4 text-amber-700">50 - 100 Triệu (tùy biến)</td>
+                                <td class="p-4 bg-maroon-50 text-emerald-700 font-black text-lg">0 VNĐ (Mã sạch tự sinh)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-charcoal-900">Chi phí máy chủ/tháng</td>
+                                <td class="p-4">2 - 5 Triệu / tháng</td>
+                                <td class="p-4 text-amber-700">1.5 - 3 Triệu (Cần RAM lớn)</td>
+                                <td class="p-4 bg-maroon-50 text-emerald-700 font-black text-lg">0 VNĐ (Cloud Serverless)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-charcoal-900">Thời gian ra mắt MVP</td>
+                                <td class="p-4">2 - 4 Tháng</td>
+                                <td class="p-4">4 - 8 Tuần</td>
+                                <td class="p-4 bg-maroon-50 text-maroon-900 font-black text-lg">7 - 14 Ngày</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-charcoal-900">Yêu cầu nhân sự IT</td>
+                                <td class="p-4">Phụ thuộc đối tác ngoài</td>
+                                <td class="p-4">Cần Sysadmin chuyên sâu</td>
+                                <td class="p-4 bg-maroon-50 text-maroon-900 font-bold">1 Kỹ sư nội bộ + AI Tools</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-charcoal-900">Tùy biến theo nghiệp vụ</td>
+                                <td class="p-4 text-slate-400">Tốn thêm chi phí</td>
+                                <td class="p-4 text-slate-400">Gò bó theo module cũ</td>
+                                <td class="p-4 bg-maroon-50 text-maroon-900 font-bold">May đo 100% bản sắc Viện</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Callout -->
+                <div class="mt-4 p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 flex items-center justify-between interactive-card" onclick="openDetailModal('vibe-coding-deep')">
+                    <div class="text-base text-amber-950 font-medium">
+                        <strong class="font-black text-amber-900">Đánh giá thực tế:</strong> Vibe Coding AI giúp Viện hoàn toàn tự chủ công nghệ, không bị phụ thuộc vào đơn vị gia công bên ngoài và bảo đảm tiến độ cấp bách cho sự kiện cuối năm 2026.
+                    </div>
+                    <span class="px-4 py-2 bg-amber-600 text-white rounded-xl text-sm font-black whitespace-nowrap ml-6 shadow-sm flex items-center gap-1.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        Khám Phá Vibe Coding ↗
+                    </span>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 10 / 12</span>
+                <span>Xem chi tiết tại file tài liệu: EDRI_COMPARISON_VIBE_CODING.md</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 11: DỰ TOÁN TƯỢNG TRƯNG (ZERO PHÍ) ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-11">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">10. Quản Trị Tài Chính</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Dự Toán Tượng Trưng: Chiến Lược Tài Chính "Zero Phí"</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Không Gánh Nặng Tài Chính</span>
+            </div>
+
+            <!-- Cost Comparison Over Time -->
+            <div class="my-auto py-2">
+                <div class="grid grid-cols-12 gap-8">
+                    <!-- Left 7 cols: Table -->
+                    <div class="col-span-7">
+                        <div class="rounded-2xl border-2 border-slate-200 overflow-hidden text-base shadow-sm">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-100 text-charcoal-900 font-black">
+                                    <tr>
+                                        <th class="p-3.5">Thành phần công nghệ</th>
+                                        <th class="p-3.5">Nền tảng sử dụng</th>
+                                        <th class="p-3.5 text-right">Chi phí 6 tháng đầu</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 text-slate-800">
+                                    <tr>
+                                        <td class="p-3 font-semibold">Website Portal & Form Intake</td>
+                                        <td class="p-3 text-slate-500">Cloudflare Pages / Vercel Free</td>
+                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold">Cơ sở dữ liệu Database</td>
+                                        <td class="p-3 text-slate-500">Supabase PostgreSQL Free Tier</td>
+                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold">Chứng chỉ bảo mật SSL & CDN</td>
+                                        <td class="p-3 text-slate-500">Cloudflare Universal Free</td>
+                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold">Gửi Email chào mừng tự động</td>
+                                        <td class="p-3 text-slate-500">Resend Free (3.000 mail/tháng)</td>
+                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold">Báo cáo Lãnh đạo thời gian thực</td>
+                                        <td class="p-3 text-slate-500">Google Sheets API Real-time</td>
+                                        <td class="p-3 text-right font-black text-emerald-700">0 VNĐ</td>
+                                    </tr>
+                                    <tr class="bg-maroon-50 font-black text-maroon-900">
+                                        <td class="p-4 text-lg">TỔNG CHI PHÍ 6 THÁNG ĐẦU</td>
+                                        <td class="p-4 text-base">Toàn bộ hệ thống</td>
+                                        <td class="p-4 text-right text-xl text-maroon-700 font-black">0 VNĐ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right 5 cols -->
+                    <div class="col-span-5 space-y-4 text-base">
+                        <div class="p-6 rounded-2xl bg-slate-50 border-2 border-slate-200 anim-card">
+                            <h4 class="font-black text-charcoal-900 text-lg flex items-center gap-2">
+                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                Cơ Sở Để Có Chi Phí 0 Đồng?
+                            </h4>
+                            <p class="text-slate-600 mt-2 leading-relaxed text-sm">
+                                Các tập đoàn công nghệ lớn hỗ trợ các gói Free Tier vĩnh viễn rất lớn. Ở quy mô 500 - 1.000 doanh nghiệp đầu tiên, Viện không bao giờ vượt ngưỡng miễn phí này.
+                            </p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-maroon-50 border-2 border-maroon-300 anim-card">
+                            <h4 class="font-black text-maroon-950 text-lg flex items-center gap-2">
+                                <svg class="w-5 h-5 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                Chiến Lược Mở Rộng (Năm 2 - 3)
+                            </h4>
+                            <p class="text-maroon-900 mt-2 leading-relaxed text-sm">
+                                Khi có nguồn thu từ hội viên Cấp 2 và đào tạo, Viện chỉ cần trích từ <strong>600.000 - 1.500.000 đ/tháng</strong> để nâng cấp lên các gói Pro phục vụ hàng vạn doanh nghiệp mà không phát sinh gánh nặng tài chính.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 11 / 12</span>
+                <span>Tuyệt đối tuân thủ nguyên tắc: Không phát sinh chi phí trước khi có nguồn thu</span>
+            </div>
+        </div>
+
+        <!-- ==================== SLIDE 12: HÀNH ĐỘNG NGAY (SPRINT 14 NGÀY) ==================== -->
+        <div class="slide p-10 md:p-14 justify-between" id="slide-12">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4">
+                <div>
+                    <span class="text-sm font-extrabold uppercase tracking-widest text-maroon-700">11. Triển Khai Ngay</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-charcoal-900 mt-1">Kế Hoạch Hành Động Ngay: Sprint 14 Ngày Đầu</h2>
+                </div>
+                <span class="badge-maroon px-4 py-1.5 rounded-full text-sm font-extrabold">Ready for Launch</span>
+            </div>
+
+            <!-- Action Plan Body -->
+            <div class="grid grid-cols-12 gap-8 my-auto py-2 items-center">
+                <!-- Left 7 cols: Sprint Table -->
+                <div class="col-span-7 space-y-3">
+                    <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 text-sm anim-card">
+                        <span class="font-black text-maroon-700 w-28">Ngày 1 - 2</span>
+                        <span class="text-charcoal-900 font-bold flex-1">Thống nhất trường thông tin & câu hỏi chẩn đoán nhu cầu DN</span>
+                        <span class="text-slate-500 font-semibold">Lãnh đạo Viện</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 text-sm anim-card">
+                        <span class="font-black text-maroon-700 w-28">Ngày 3 - 6</span>
+                        <span class="text-charcoal-900 font-bold flex-1">Vibe coding giao diện Website Portal Viện & Deploy Cloudflare</span>
+                        <span class="text-slate-500 font-semibold">Nhóm Công nghệ</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3.5 rounded-xl bg-maroon-50 border-2 border-maroon-300 text-sm anim-card">
+                        <span class="font-black text-maroon-800 w-28">Ngày 7 - 9</span>
+                        <span class="text-maroon-950 font-black flex-1">Vibe coding Cổng Intake Doanh nghiệp & kết nối Supabase DB</span>
+                        <span class="text-maroon-800 font-bold">Nhóm Công nghệ</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 text-sm anim-card">
+                        <span class="font-black text-maroon-700 w-28">Ngày 10 - 11</span>
+                        <span class="text-charcoal-900 font-bold flex-1">Cấu hình tự động gửi email chào mừng & báo Telegram cho Trưởng ban</span>
+                        <span class="text-slate-500 font-semibold">Thư ký & Tech</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 text-sm anim-card">
+                        <span class="font-black text-maroon-700 w-28">Ngày 12 - 14</span>
+                        <span class="text-charcoal-900 font-bold flex-1">Tập huấn Ban Cộng đồng & Chạy thử nghiệm với 20 doanh nghiệp mẫu</span>
+                        <span class="text-emerald-700 font-black">Toàn bộ các Ban</span>
+                    </div>
+                </div>
+
+                <!-- Right 5 cols -->
+                <div class="col-span-5 space-y-4">
+                    <div class="p-6 rounded-3xl bg-charcoal-900 text-white space-y-4 shadow-xl anim-card">
+                        <div class="text-xs font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            TÀI LIỆU KỸ THUẬT SONG HÀNH
+                        </div>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
+                                📄 <strong>EDRI_TECH_MASTER_PLAN.md</strong>: Lộ trình 3 năm, Gantt chart, RACI.
+                            </div>
+                            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
+                                🏛 <strong>EDRI_TECH_ARCHITECTURE.md</strong>: Kiến trúc LMS, Mobile App & AI Content.
+                            </div>
+                            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
+                                ⚡ <strong>EDRI_COMPARISON_VIBE_CODING.md</strong>: Báo cáo kinh tế Vibe Coding vs Open-source.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-maroon-700 text-white text-center shadow-lg anim-card">
+                        <div class="text-lg font-black uppercase flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Cam Kết Bàn Giao MVP Sau 14 Ngày
+                        </div>
+                        <div class="text-sm text-maroon-100 mt-1">Sẵn sàng vận hành đón đầu đợt tuyển chọn hội viên cuối năm 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-sm text-slate-400 pt-3 border-t border-slate-200 flex justify-between font-medium">
+                <span>Trang 12 / 12</span>
+                <span>Xin trân trọng cảm ơn Ban Lãnh Đạo Viện & Các Ban Chuyên Môn!</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating Navigation Bar -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-charcoal-900/90 backdrop-blur-md px-8 py-3 rounded-full shadow-2xl border border-slate-700 flex items-center space-x-6 z-40 text-white text-sm">
+        <!-- Prev Button -->
+        <button id="prevBtn" onclick="prevSlide()" class="hover:text-amber-400 transition-colors flex items-center gap-1.5 font-bold disabled:opacity-30 disabled:hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            <span>Trang Trước</span>
+        </button>
+
+        <!-- Slide Indicator -->
+        <div class="font-mono text-slate-300 font-extrabold tracking-widest text-base px-2">
+            <span id="currentSlideNum" class="text-amber-400">1</span> / <span id="totalSlidesNum">12</span>
+        </div>
+
+        <!-- Next Button -->
+        <button id="nextBtn" onclick="nextSlide()" class="hover:text-amber-400 transition-colors flex items-center gap-1.5 font-bold disabled:opacity-30 disabled:hover:text-white">
+            <span>Trang Tiếp</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <span class="text-slate-600">|</span>
+
+        <!-- Jump to Agenda Modal Toggle -->
+        <button onclick="toggleIndexModal()" class="hover:text-amber-400 transition-colors flex items-center gap-1.5 text-slate-300 font-semibold" title="Mục lục các trang">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+            <span>Mục lục</span>
+        </button>
+
+        <!-- Fullscreen Button -->
+        <button onclick="toggleFullScreen()" class="hover:text-amber-400 transition-colors text-slate-400" title="Toàn màn hình">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+        </button>
+    </div>
+
+    <!-- Quick Jump Menu Modal -->
+    <div id="indexModal" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+        <div class="bg-white rounded-3xl max-w-3xl w-full p-8 max-h-[85vh] overflow-y-auto shadow-2xl">
+            <div class="flex items-center justify-between border-b-2 border-slate-200 pb-4 mb-5">
+                <h3 class="font-black text-charcoal-900 text-xl flex items-center gap-2">
+                    <svg class="w-6 h-6 text-maroon-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                    Mục Lục Các Trang Trình Chiếu (12 Trang)
+                </h3>
+                <button onclick="toggleIndexModal()" class="text-slate-400 hover:text-slate-800 text-2xl font-bold">✕</button>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-sm" id="indexList">
+                <button onclick="goToSlide(1)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">1. Trang Bìa: Đề Án Công Nghệ EDRI</button>
+                <button onclick="goToSlide(2)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">2. Triết Lý: Bắt Đầu Đơn Giản - Tầm Nhìn 2-3 Năm</button>
+                <button onclick="goToSlide(3)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">3. Bản Đồ Hệ Sinh Thái Công Nghệ (2026-2029)</button>
+                <button onclick="goToSlide(4)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">4. Biểu Đồ Gantt (Gantt Chart): Tiến Độ & Cột Mốc</button>
+                <button onclick="goToSlide(5)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">5. Công Nghệ Hỗ Trợ Toàn Diện Các Phòng Ban</button>
+                <button onclick="goToSlide(6)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">6. Xưởng Nội Dung Số Tự Động (Ban Truyền Thông)</button>
+                <button onclick="goToSlide(7)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">7. CRM & Phân Tích Định Lượng (Ban Đối Tác)</button>
+                <button onclick="goToSlide(8)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">8. LMS Đào Tạo Hybrid & Mobile App (Năm 2-3)</button>
+                <button onclick="goToSlide(9)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">9. Bộ Ba Hạt Nhân Triển Khai Sớm (14 Ngày)</button>
+                <button onclick="goToSlide(10)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">10. So Sánh: Open-Source Cũ vs Vibe Coding AI</button>
+                <button onclick="goToSlide(11)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">11. Dự Toán Tượng Trưng: Chiến Lược Zero Phí</button>
+                <button onclick="goToSlide(12)" class="p-3.5 rounded-xl bg-slate-50 hover:bg-maroon-50 text-left border border-slate-200 hover:border-maroon-300 font-bold">12. Kế Hoạch Hành Động Ngay (Sprint 14 Ngày)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Component Detail Drawer / Modal -->
+    <div id="detailModal" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-8 max-h-[85vh] overflow-y-auto shadow-2xl relative">
+            <button onclick="closeDetailModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-800 text-2xl font-bold">✕</button>
+            <div id="detailModalContent">
+                <!-- Dynamically injected detail content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Presentation Engine & Modal Scripts -->
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 12;
+
+        function updateSlideUI() {
+            for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if (slide) {
+                    if (i === currentSlide) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                }
+            }
+            document.getElementById('currentSlideNum').innerText = currentSlide;
+            document.getElementById('totalSlidesNum').innerText = totalSlides;
+
+            document.getElementById('prevBtn').disabled = (currentSlide === 1);
+            document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideUI();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideUI();
+            }
+        }
+
+        function goToSlide(slideNum) {
+            if (slideNum >= 1 && slideNum <= totalSlides) {
+                currentSlide = slideNum;
+                updateSlideUI();
+                const modal = document.getElementById('indexModal');
+                if (!modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                }
+            }
+        }
+
+        function toggleIndexModal() {
+            const modal = document.getElementById('indexModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Detailed knowledge base for interactive popups
+        const detailData = {
+            'pillar-community': {
+                title: 'Trụ Cột 1: Cộng Đồng Doanh Nhân Việt Nam - ASEAN',
+                tag: 'Phễu Đầu Vào & Tương Tác',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Cộng đồng là nền tảng thu hút đúng chân dung doanh nhân, xây dựng quan hệ gắn bó và duy trì sự hiện diện thường xuyên.</p>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Phân cấp 2 tầng:</strong> Doanh nghiệp thành viên (Cấp 1 - trải nghiệm) và Hội viên chính thức (Cấp 2 - cam kết sâu).
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Onboarding tự động:</strong> Gửi thư chào mừng, hướng dẫn quy chế và đưa vào phễu chẩn đoán nhu cầu.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Gắn kết thực chất:</strong> Thành viên tham gia vì nhận được sự gỡ khó thực tế, không dừng ở networking bề nổi.
+                        </div>
+                    </div>
+                `
+            },
+            'pillar-edu': {
+                title: 'Trụ Cột 2: Đào Tạo & Chuyên Gia Cố Vấn Thực Chiến',
+                tag: 'Nâng Cao Năng Lực Quản Trị',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Giải quyết tận gốc các điểm nghẽn về quản trị, nhân sự, tài chính và chuyển đổi số cho doanh nghiệp hội viên.</p>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Cố vấn 1:1:</strong> Huy động các chuyên gia cấp Giám đốc Đào tạo, Giám đốc Nhân sự tham gia chẩn đoán thực tế.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Đào tạo may đo:</strong> Thiết kế chương trình theo đúng "bệnh" của từng nhóm doanh nghiệp từ dữ liệu CDP.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• LMS Hybrid:</strong> Học viện số cung cấp các bài giảng ngắn micro-learning linh hoạt cho lãnh đạo bận rộn.
+                        </div>
+                    </div>
+                `
+            },
+            'pillar-trade': {
+                title: 'Trụ Cột 3: Xúc Tiến Thương Mại Song Phương ASEAN',
+                tag: 'Mở Rộng Thị Trường Quốc Tế',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Tận dụng mạng lưới ngoại giao và tổ chức quốc tế của Viện để mở ra các cơ hội giao thương hai chiều.</p>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Chiều đi (Việt Nam ➔ ASEAN):</strong> Hỗ trợ doanh nghiệp Việt đạt chuẩn chất lượng xuất khẩu sang Lào, Thái Lan, Singapore...
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Chiều về (ASEAN ➔ Việt Nam):</strong> Kết nối đối tác quốc tế tìm kiếm nhà phân phối và nguồn cung ứng tại Việt Nam.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• AI Matchmaking:</strong> Tự động lọc và ghép đôi nhu cầu B2B với độ chính xác cao dựa trên hồ sơ CDP.
+                        </div>
+                    </div>
+                `
+            },
+            'cost-zero': {
+                title: 'Chiến Lược Tài Chính "Zero Phí" Khởi Đầu',
+                tag: 'Tối Ưu Ngân Sách Khởi Nghiệp',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Viện chưa có nguồn thu từ hội viên trong 6 tháng đầu. Do đó hạ tầng công nghệ được thiết kế 100% không phát sinh chi phí cố định.</p>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Cloud Serverless Free Tier:</strong> Cloudflare Pages và Supabase PostgreSQL miễn phí cho < 50.000 người dùng.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Tự sinh mã qua Vibe Coding:</strong> Không tốn hàng trăm triệu mua phần mềm ngoài hay thuê gia công Agency.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <strong>• Mở rộng tự chủ:</strong> Sau 1 năm khi có nguồn thu từ hội phí Cấp 2 và đào tạo, chỉ cần trích 600k - 1.2tr/tháng để nâng cấp gói Pro.
+                        </div>
+                    </div>
+                `
+            },
+            'quickwin-portal': {
+                title: 'Hạng Mục 1: Website Portal Viện EDRI',
+                tag: 'Bàn Giao 5 - 7 Ngày',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Kênh truyền thông thể chế chính thức, khẳng định vị thế khoa học trực thuộc Hội SEARAV.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• Giới thiệu ban lãnh đạo (Viện trưởng TS. Lê Thị Huyền Trang, Viện trưởng Danh dự Thang Văn Phúc, Chủ tịch HĐQL Lương Thị Kim Xuân).</li>
+                        <li>• Trình bày 3 trụ cột hoạt động và các chương trình đối thoại lãnh đạo.</li>
+                        <li>• Nút kêu gọi hành động dẫn trực tiếp tới Cổng Intake Doanh nghiệp.</li>
+                        <li>• Triển khai trên Cloudflare Pages không tốn phí duy trì máy chủ.</li>
+                    </ul>
+                `
+            },
+            'quickwin-intake': {
+                title: 'Hạng Mục 2: Cổng Ghi Nhận & Chẩn Đoán Doanh Nghiệp',
+                tag: 'Bàn Giao 3 - 5 Ngày',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Công cụ tiếp nhận dữ liệu số hóa thông minh thay thế hoàn toàn file giấy và Excel rời rạc.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• Biểu mẫu tối ưu Mobile-first, thao tác nhanh trong 3 phút.</li>
+                        <li>• Chẩn đoán điểm nghẽn doanh nghiệp: Quản trị, nhân sự, vốn hay xúc tiến ASEAN.</li>
+                        <li>• Gắn mã người giới thiệu (Referral ID) để ghi nhận công sức của từng Trưởng ban.</li>
+                        <li>• Tự động phản hồi thư chào mừng và gửi thông báo Telegram cho phụ trách viên.</li>
+                    </ul>
+                `
+            },
+            'quickwin-crm': {
+                title: 'Hạng Mục 3: Mini-CRM Quản Trị & Phân Cấp Hội Viên',
+                tag: 'Bàn Giao 3 - 4 Ngày',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Bảng điều khiển tập trung cho Ban Phát triển Cộng đồng và Ban Thư ký.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• Danh bạ doanh nghiệp phân loại theo ngành, khu vực, trạng thái tiếp cận.</li>
+                        <li>• Quản lý hành trình 6 bước và chuyển đổi từ Cấp 1 lên Cấp 2.</li>
+                        <li>• Đồng bộ trực tiếp về 1 file Google Sheets bảo mật để Lãnh đạo xem trên điện thoại 24/7.</li>
+                        <li>• Hỗ trợ xuất Excel báo cáo giao ban chỉ bằng 1 cú nhấp chuột.</li>
+                    </ul>
+                `
+            },
+            'lms-detail': {
+                title: 'Học Viện Doanh Nhân: Nền Tảng Đào Tạo LMS Hybrid',
+                tag: 'Mở Rộng Năm 2 (2027 - 2028)',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Mô hình đào tạo linh hoạt kết hợp trực tiếp và trực tuyến, phù hợp với quỹ thời gian của chủ doanh nghiệp.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• <strong>Lớp học tập trung:</strong> Điểm danh quét mã QR, giao lưu mạng lưới chuyên gia cố vấn thực tế.</li>
+                        <li>• <strong>Khóa học số (Micro-learning):</strong> Video bài giảng 5 - 10 phút, bài tập trắc nghiệm chẩn đoán năng lực quản trị.</li>
+                        <li>• <strong>Chứng chỉ số hóa:</strong> Xuất chứng chỉ có gắn chữ ký số và mã QR tra cứu tính chính thống trên website Viện.</li>
+                        <li>• Tạo nguồn thu ổn định từ các khóa đào tạo may đo cho từng doanh nghiệp.</li>
+                    </ul>
+                `
+            },
+            'app-detail': {
+                title: 'Ứng Dụng Di Động: Mobile App EDRI Doanh Nhân ASEAN',
+                tag: 'Bùng Nổ Năm 3 (2028 - 2029)',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Biến tổ chức thành nền tảng số hóa nằm gọn trong tay của hàng vạn doanh nhân trên iOS & Android.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• <strong>Thẻ hội viên số hóa (Digital Pass):</strong> Phân hạng thẻ Cấp 1 (Bạc) và Cấp 2 (Vàng) check-in sự kiện 1 chạm.</li>
+                        <li>• <strong>Danh bạ nội bộ bảo mật:</strong> Tìm kiếm cơ hội hợp tác kinh doanh giữa các doanh nghiệp thành viên.</li>
+                        <li>• <strong>Đặt lịch cố vấn 1:1:</strong> Chọn chuyên gia và khung giờ mong muốn ngay trên điện thoại.</li>
+                        <li>• <strong>Bản tin độc quyền:</strong> Nhận các báo cáo kinh tế và lời mời tham gia đoàn xúc tiến thương mại quốc tế.</li>
+                    </ul>
+                `
+            },
+            'trade-detail': {
+                title: 'Sàn Xúc Tiến Giao Thương Số Hóa Song Phương ASEAN',
+                tag: 'Bứt Phá Quốc Tế (2028 - 2029)',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Nền tảng thương mại số hóa kết nối doanh nghiệp Việt với các cơ quan xúc tiến thương mại 10 quốc gia ASEAN.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• <strong>Cơ sở dữ liệu năng lực xuất khẩu:</strong> Danh mục sản phẩm đạt chứng chỉ chất lượng quốc tế (ISO, Halal, FDA).</li>
+                        <li>• <strong>Thuật toán AI Matchmaking:</strong> Tự động so khớp nhu cầu mua hàng của đối tác quốc tế với nhà cung ứng Việt Nam.</li>
+                        <li>• <strong>Phòng giao thương ảo (Virtual B2B Booth):</strong> Giới thiệu hồ sơ năng lực 3D/video cho đối tác nước ngoài xem xét trước khi gặp mặt.</li>
+                    </ul>
+                `
+            },
+            'ai-media': {
+                title: 'Xưởng Tạo Dựng Nội Dung Số Tự Động (AI Media Studio)',
+                tag: 'Công Nghệ Ban Truyền Thông',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Giúp 1 cán bộ truyền thông đạt năng suất tương đương phòng truyền thông 5 nhân sự chuyên nghiệp.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• <strong>Tự động tóm tắt:</strong> Đọc biên bản họp, ghi âm tọa đàm và trích xuất các ý tưởng cốt lõi.</li>
+                        <li>• <strong>Đa dạng định dạng:</strong> Tự động viết thông cáo báo chí, bài báo website chuẩn SEO, bài đăng MXH và kịch bản video ngắn.</li>
+                        <li>• <strong>Phân phối đa kênh:</strong> Đẩy tin tức 1 chạm lên Website, Fanpage, Zalo OA và Email Newsletter.</li>
+                    </ul>
+                `
+            },
+            'quantitative-analytics': {
+                title: 'Nền Tảng Phân Tích Định Lượng & Matchmaking AI',
+                tag: 'Công Nghệ Ban Đối Tác Doanh Nghiệp',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Thay thế hoàn toàn việc đánh giá cảm tính bằng các chỉ số toán học định lượng chính xác.</p>
+                    <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs font-mono mb-3">
+                        ARI Score = 0.3*PhapLy + 0.25*ChatLuong + 0.25*TaiChinh + 0.2*SoHoa
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• Đánh giá mức độ sẵn sàng hội nhập ASEAN theo thang điểm 100.</li>
+                        <li>• Thuật toán so khớp vector tự động ghép đôi khi độ tương thích đạt trên 80%.</li>
+                        <li>• Theo dõi chính xác giá trị và tiến độ của từng cơ hội hợp tác xúc tiến thương mại.</li>
+                    </ul>
+                `
+            },
+            'expert-matching': {
+                title: 'Cổng Điều Phối Mạng Lưới Chuyên Gia Cố Vấn 1:1',
+                tag: 'Hỗ Trợ Vận Hành Tổ Chức',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Chuyển hóa uy tín và quan hệ của đội ngũ chuyên gia Viện thành sản phẩm dịch vụ tư vấn cụ thể.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• Hồ sơ năng lực chuyên gia được kiểm chứng theo từng nhóm ngành nghề.</li>
+                        <li>• Quy trình chẩn đoán tình huống thực tế của doanh nghiệp theo tiêu chuẩn Viện.</li>
+                        <li>• Đánh giá mức độ hài lòng của hội viên sau từng phiên tư vấn.</li>
+                    </ul>
+                `
+            },
+            'bi-detail': {
+                title: 'Executive War Room Dashboard: Báo Cáo Lãnh Đạo Thời Gian Thực',
+                tag: 'Công Nghệ Ban Lãnh Đạo',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Phòng điều hành thông minh giúp Viện trưởng và Ban Lãnh đạo nắm trọn tình hình tổ chức trong nháy mắt.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• Theo dõi số lượng hội viên mới gia nhập mỗi ngày theo từng Ban phụ trách.</li>
+                        <li>• Bản đồ phân bố doanh nghiệp theo tỉnh thành và khối ngành nghề VSIC.</li>
+                        <li>• Tỷ lệ chuyển đổi hội viên Cấp 1 sang Cấp 2 và doanh thu hoạt động.</li>
+                        <li>• Xem trực tiếp trên điện thoại di động mọi lúc mọi nơi.</li>
+                    </ul>
+                `
+            },
+            'vibe-coding-deep': {
+                title: 'Tại Sao Vibe Coding AI Là Chìa Khóa Cho Viện EDRI?',
+                tag: 'Công Nghệ Hiện Đại Thay Thế Open-Source Cũ',
+                content: `
+                    <p class="text-base text-slate-600 leading-relaxed mb-4">Vibe Coding là phương pháp lập trình AI thế hệ mới kết hợp giữa chỉ đạo nghiệp vụ tự nhiên và trợ lý sinh mã tự động.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• <strong>Tốc độ thần tốc:</strong> Ra mắt MVP trong 7 - 14 ngày thay vì 2 - 4 tháng thuê ngoài.</li>
+                        <li>• <strong>Không chi phí bản quyền:</strong> Tận dụng các nền tảng Cloud Serverless mã sạch tự sinh.</li>
+                        <li>• <strong>May đo 100%:</strong> Đúng bản sắc đỏ đun - đen trang trọng của Viện, không bị trói buộc trong giao diện cũ kỹ của Odoo hay WordPress.</li>
+                        <li>• <strong>Làm chủ hoàn toàn:</strong> Viện sở hữu 100% mã nguồn, không bị lệ thuộc vào bất kỳ nhà thầu bên ngoài nào.</li>
+                    </ul>
+                `
+            }
+        };
+
+        function openDetailModal(key) {
+            const modal = document.getElementById('detailModal');
+            const container = document.getElementById('detailModalContent');
+            const data = detailData[key];
+
+            if (data) {
+                container.innerHTML = `
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-3 py-1 rounded-full text-xs font-bold badge-maroon">${data.tag}</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-charcoal-900 mb-4">${data.title}</h3>
+                    <div>${data.content}</div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex justify-end">
+                        <button onclick="closeDetailModal()" class="px-5 py-2 rounded-xl bg-charcoal-900 text-white font-bold text-sm hover:bg-slate-800 transition-colors">
+                            Đóng Chi Tiết
+                        </button>
+                    </div>
+                `;
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'Escape') {
+                const indexModal = document.getElementById('indexModal');
+                const detailModal = document.getElementById('detailModal');
+                if (!indexModal.classList.contains('hidden')) indexModal.classList.add('hidden');
+                if (!detailModal.classList.contains('hidden')) detailModal.classList.add('hidden');
+            } else if (e.key === 'm' || e.key === 'M') {
+                toggleIndexModal();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullScreen();
+            }
+        });
+
+        // Initialize UI
+        updateSlideUI();
+    </script>
+</body>
+</html>
